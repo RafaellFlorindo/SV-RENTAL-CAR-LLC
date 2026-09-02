@@ -1,23 +1,22 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../data/company';
 
 export default function PromoBanner() {
   return (
-    <section className="py-12 bg-[#F8F9FA] px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto bg-[#ECE8DF] border border-[#D8D2C4] rounded-2xl p-8 sm:p-10 text-center shadow-sm">
-        <h3 className="text-xl sm:text-2xl font-serif font-bold text-navy-900 mb-2">
-          Refer a friend or book your next trip and get <span className="text-gold-dark">10% OFF</span>!
-        </h3>
-        <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto mb-6">
-          Family-owned commitment to safety and discretion. Enjoy 10% off your next booking when you recommend SV Rental Car LLC.
-        </p>
-        <a
-          href={`tel:${companyInfo.phoneRaw}`}
-          className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0F1E33] hover:bg-[#182C4A] text-white font-bold text-xs uppercase tracking-wider rounded transition shadow-md"
-        >
-          <span>Claim Your 10% Discount</span>
-          <ArrowRight className="w-3.5 h-3.5 text-gold" />
+    <section className="bg-[#F4EFE6] px-5 pb-24 lg:px-8 lg:pb-32">
+      <div className="relative mx-auto grid max-w-[1440px] overflow-hidden bg-[#131514] text-white lg:grid-cols-12">
+        <div className="absolute -right-16 -top-32 font-serif text-[24rem] font-black leading-none text-white/[0.025]">10</div>
+        <div className="relative p-8 sm:p-12 lg:col-span-8 lg:p-16">
+          <span className="section-kicker text-white/55">A ride worth sharing</span>
+          <h3 className="display-balance mt-6 max-w-3xl font-serif text-4xl font-semibold leading-[1] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+            Bring a friend. Come back. <span className="italic text-gold">Keep 10%.</span>
+          </h3>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-white/55">Referrals and returning clients receive 10% off their next private ride.</p>
+        </div>
+        <a href={`tel:${companyInfo.phoneRaw}`} className="group relative flex min-h-48 items-end justify-between border-t border-white/15 bg-gold p-8 transition hover:bg-gold-light lg:col-span-4 lg:border-l lg:border-t-0 lg:p-12">
+          <span className="max-w-[12rem] text-xs font-bold uppercase leading-5 tracking-[0.16em]">Claim the return-client rate</span>
+          <ArrowUpRight className="h-10 w-10 transition group-hover:rotate-45" strokeWidth={1.2} />
         </a>
       </div>
     </section>

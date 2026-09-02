@@ -1,55 +1,27 @@
 import React from 'react';
-import { Clock, Lock, History, UserCheck, CheckCircle2 } from 'lucide-react';
+import { Clock3, ShieldCheck, UserRoundCheck, Plane, MapPin } from 'lucide-react';
+
+const facts = [
+  [Clock3, '24/7', 'By prior reservation'],
+  [ShieldCheck, 'Private', 'Licensed & insured'],
+  [UserRoundCheck, 'Personal', 'The same trusted team'],
+  [Plane, 'Flight-aware', 'PHX & SDL monitored'],
+  [MapPin, 'Valley-wide', 'Scottsdale + Phoenix']
+];
 
 export default function TrustBar() {
-  const badges = [
-    {
-      icon: Clock,
-      title: "24/7 Availability",
-      subtitle: "By Prior Reservation"
-    },
-    {
-      icon: Lock,
-      title: "Confidential & Safe",
-      subtitle: "Discreet Private Travel"
-    },
-    {
-      icon: History,
-      title: "+3 Years Experience",
-      subtitle: "Trusted Valley Chauffeur"
-    },
-    {
-      icon: UserCheck,
-      title: "Female Chauffeur Option",
-      subtitle: "Available Upon Request"
-    },
-    {
-      icon: CheckCircle2,
-      title: "100% On-Time Guarantee",
-      subtitle: "Flight & Route Monitored"
-    }
-  ];
-
   return (
-    <section className="bg-[#11233D] border-y border-white/10 py-4 text-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-          {badges.map((b, idx) => {
-            const Icon = b.icon;
-            return (
-              <div
-                key={idx}
-                className={`flex flex-col items-center justify-center p-2 ${
-                  idx === 4 ? 'col-span-2 md:col-span-1' : ''
-                }`}
-              >
-                <Icon className="w-5 h-5 text-gold mb-1.5" />
-                <span className="text-xs font-bold uppercase tracking-wider text-white">{b.title}</span>
-                <span className="text-[11px] text-slate-300">{b.subtitle}</span>
-              </div>
-            );
-          })}
-        </div>
+    <section className="border-b border-black/15 bg-gold text-white">
+      <div className="mx-auto grid max-w-[1440px] grid-cols-2 lg:grid-cols-5">
+        {facts.map(([Icon, title, detail], index) => (
+          <div key={title} className={`flex min-h-[112px] items-center gap-3 border-black/15 px-5 py-6 lg:px-7 ${index < 4 ? 'lg:border-r' : ''} ${index % 2 === 0 ? 'border-r lg:border-r' : ''} ${index === 4 ? 'col-span-2 border-t lg:col-span-1 lg:border-t-0' : ''}`}>
+            <Icon className="h-5 w-5 shrink-0" strokeWidth={1.6} />
+            <div>
+              <strong className="block font-serif text-xl font-semibold leading-none">{title}</strong>
+              <span className="mt-1.5 block text-[9px] font-bold uppercase tracking-[0.14em] text-white/70">{detail}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -8,17 +8,17 @@ export default {
     extend: {
       colors: {
         navy: {
-          950: '#09121F',
-          900: '#0E1D31',
-          850: '#14253E',
-          800: '#1A304F',
-          700: '#233E65'
+          950: '#131514',
+          900: '#191C1A',
+          850: '#202421',
+          800: '#2B302C',
+          700: '#3A403B'
         },
         gold: {
-          DEFAULT: '#C59A45',
-          light: '#E2BD75',
-          dark: '#A67D28',
-          bg: '#F9F5EC'
+          DEFAULT: '#F36B2B',
+          light: '#FF915E',
+          dark: '#C94712',
+          bg: '#FFF0E8'
         },
         surface: {
           light: '#FFFFFF',
@@ -27,8 +27,12 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+        serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
+        sans: ['"Archivo"', 'system-ui', 'sans-serif']
+      },
+      boxShadow: {
+        editorial: '0 24px 80px rgba(19, 21, 20, 0.14)',
+        card: '0 18px 50px rgba(19, 21, 20, 0.08)'
       }
     },
   },

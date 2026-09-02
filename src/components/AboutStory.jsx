@@ -1,73 +1,32 @@
 import React from 'react';
-import { User, Phone } from 'lucide-react';
+import { ArrowUpRight, Phone } from 'lucide-react';
 import { companyInfo } from '../data/company';
 import SvLogo from '../assets/logo/SvLogo';
 
 export default function AboutStory() {
   return (
-    <section id="about" className="py-20 bg-white text-navy-950 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="bg-[#FAF8F5] border border-[#E9E1D1] rounded-2xl p-8 sm:p-12 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            <div className="lg:col-span-7 space-y-5">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest">
-                <User className="w-3.5 h-3.5 text-gold" />
-                <span>ABOUT {companyInfo.name}</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-navy-900 tracking-tight">
-                A Family Dream Built on Comfort, Safety &amp; Trust
-              </h2>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
-                <strong className="text-navy-900 font-semibold">{companyInfo.name}</strong> is a family-owned business founded by <strong className="text-gold-dark font-semibold">{companyInfo.founders}</strong>. Our mission is to bring true peace of mind, punctuality, and luxury to private transportation across Arizona.
-              </p>
-
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
-                With <strong className="text-navy-900 font-medium">over {companyInfo.experienceYears} years of experience</strong> in private transportation, we take immense pride in our driving excellence and vehicle cleanliness. Every ride is managed with personal care and discretion.
-              </p>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-200">
-                <div>
-                  <span className="block text-xl font-serif font-bold text-navy-900">24/7</span>
-                  <span className="text-[11px] text-slate-500">By Prior Reservation</span>
-                </div>
-                <div>
-                  <span className="block text-xl font-serif font-bold text-navy-900">100%</span>
-                  <span className="text-[11px] text-slate-500">Licensed &amp; Insured in AZ</span>
-                </div>
-                <div>
-                  <span className="block text-xl font-serif font-bold text-gold-dark">10% Off</span>
-                  <span className="text-[11px] text-slate-500">Referrals &amp; Return Clients</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-5 bg-white rounded-xl p-6 border border-slate-200 text-center shadow-sm flex flex-col items-center">
-              <SvLogo showText={false} className="w-16 h-16 mb-3" />
-              <h3 className="text-lg font-serif font-bold text-navy-900">João Victor Gois Dias</h3>
-              <p className="text-xs text-gold-dark uppercase tracking-widest font-semibold mt-0.5">
-                Founder &amp; Executive Chauffeur
-              </p>
-              <p className="text-xs text-slate-500 mt-2 max-w-xs mx-auto italic">
-                "We care deeply about the comfort and safety of every passenger we welcome into our vehicles."
-              </p>
-              <div className="mt-5 pt-5 border-t border-slate-100 flex justify-center w-full">
-                <a
-                  href={`tel:${companyInfo.phoneRaw}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#0F1E33] hover:bg-[#182C4A] px-5 py-2.5 rounded transition shadow"
-                >
-                  <Phone className="w-3.5 h-3.5 text-gold" />
-                  <span>Direct: {companyInfo.phone}</span>
-                </a>
-              </div>
-            </div>
-
+    <section id="about" className="bg-[#F36B2B] py-24 text-white lg:py-32">
+      <div className="mx-auto grid max-w-[1440px] gap-10 px-5 lg:grid-cols-12 lg:px-8">
+        <div className="lg:col-span-4">
+          <span className="section-kicker text-white/65">Family-owned in Scottsdale</span>
+          <div className="mt-10 flex aspect-square max-w-sm items-center justify-center rounded-full border border-white/30 bg-[#F4EFE6] shadow-editorial">
+            <SvLogo showText={false} className="scale-[2.8]" />
           </div>
         </div>
 
+        <div className="lg:col-span-7 lg:col-start-6">
+          <h2 className="display-balance font-serif text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">This company began with a simple idea: care travels.</h2>
+          <div className="mt-9 grid gap-8 border-t border-white/25 pt-8 sm:grid-cols-2">
+            <p className="text-sm leading-7 text-white/80">Founded by <strong className="text-white">{companyInfo.founders}</strong>, SV Rental Car brings personal accountability to private transportation across Arizona.</p>
+            <p className="text-sm leading-7 text-white/80">Every reservation is handled with the comfort, punctuality and attention we would want for our own family.</p>
+          </div>
+
+          <blockquote className="mt-12 border-l border-white/40 pl-6 font-serif text-3xl italic leading-tight text-white sm:text-4xl">“We want every passenger to feel looked after before the car even arrives.”</blockquote>
+          <div className="mt-8 flex flex-wrap items-center gap-4">
+            <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white transition hover:bg-white hover:text-black"><Phone className="h-4 w-4" />Talk to João</a>
+            <a href="#reservation" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white">Plan a ride <ArrowUpRight className="h-4 w-4" /></a>
+          </div>
+        </div>
       </div>
     </section>
   );

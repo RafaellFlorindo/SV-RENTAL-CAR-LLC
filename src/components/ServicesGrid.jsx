@@ -1,85 +1,60 @@
 import React from 'react';
-import { Sparkles, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { servicesData } from '../data/services';
-import {
-  HourlyChauffeurVisual,
-  GolfOutingVisual,
-  AirportTransferVisual,
-  FemaleChauffeurVisual,
-  ExecutiveTravelVisual,
-  SpecialOccasionVisual
-} from '../assets/images/ServiceVisuals';
+import { hourlyChauffeur, golfTransport, airportTransfer, femaleChauffeur, executiveTravel, specialOccasion } from '../assets/generated';
+
+const images = {
+  'hourly-charter': hourlyChauffeur,
+  'golf-events': golfTransport,
+  'airport-transfers': airportTransfer,
+  'female-chauffeur': femaleChauffeur,
+  'executive-rides': executiveTravel,
+  'special-occasions': specialOccasion
+};
+
+const spans = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-3', 'lg:col-span-3', 'lg:col-span-3', 'lg:col-span-3'];
 
 export default function ServicesGrid() {
-  const visuals = {
-    'hourly-charter': <HourlyChauffeurVisual />,
-    'golf-events': <GolfOutingVisual />,
-    'airport-transfers': <AirportTransferVisual />,
-    'female-chauffeur': <FemaleChauffeurVisual />,
-    'executive-rides': <ExecutiveTravelVisual />,
-    'special-occasions': <SpecialOccasionVisual />
-  };
-
   return (
-    <section id="services" className="py-20 lg:py-24 bg-[#F8F9FA] text-navy-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-gold" />
-            <span>OUR SERVICES</span>
+    <section id="services" className="bg-[#F4EFE6] py-24 lg:py-32">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+        <div className="mb-14 grid items-end gap-8 lg:grid-cols-12">
+          <div className="lg:col-span-8">
+            <div className="section-kicker text-black/55">Built around your itinerary</div>
+            <h2 className="display-balance mt-6 max-w-4xl font-serif text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
+              One driver. Every version of your day.
+            </h2>
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold text-navy-900 tracking-tight">
-            EVERYTHING YOUR JOURNEY NEEDS
-          </h2>
-          <div className="w-14 h-1 bg-gold mx-auto my-4 rounded-full"></div>
-          <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
-            From premier golf outing transportation to discreet executive travel and airport transfers, SV Rental Car LLC provides bespoke chauffeured mobility across Scottsdale and the Phoenix Valley.
+          <p className="max-w-sm text-sm leading-7 text-black/55 lg:col-span-4 lg:justify-self-end">
+            From the first tee to the final flight, every ride is planned with the same careful timing, polished vehicle and personal attention.
           </p>
         </div>
 
-        {/* 6 Grid Cards (2 rows of 3 on desktop, clean bespoke visual graphics) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {servicesData.map((s) => (
-            <div
-              key={s.id}
-              className="bg-white rounded-xl border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-gold/50 transition duration-300 overflow-hidden flex flex-col justify-between group"
-            >
-              <div>
-                <div className="h-56 overflow-hidden relative bg-[#091424]">
-                  {visuals[s.id] || (
-                    <img
-                      src={s.image}
-                      alt={s.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
-                    />
-                  )}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-12">
+          {servicesData.map((service, index) => (
+            <article key={service.id} className={`group overflow-hidden border border-black/15 bg-[#FBF8F2] transition duration-500 hover:-translate-y-1 hover:shadow-card md:col-span-1 ${spans[index]}`}>
+              <a href="#reservation" className="block h-full">
+                <div className={`relative overflow-hidden bg-black ${index < 2 ? 'h-72 sm:h-80' : 'h-60'}`}>
+                  <img src={images[service.id]} alt={service.title} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/5" />
+                  <span className="absolute left-4 top-4 rounded-full bg-[#F4EFE6]/95 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-black backdrop-blur-sm">{service.tag}</span>
+                  <span className="absolute bottom-4 left-4 font-serif text-3xl italic text-white/95">0{index + 1}</span>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-base sm:text-lg font-bold font-serif text-navy-900 mb-2 group-hover:text-gold transition uppercase tracking-wide">
-                    {s.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                    {s.description}
-                  </p>
+                <div className="flex min-h-[190px] flex-col justify-between p-5 sm:p-6">
+                  <div>
+                    <h3 className="max-w-lg font-serif text-2xl font-semibold leading-tight tracking-[-0.025em]">{service.title}</h3>
+                    <p className="mt-3 max-w-xl text-xs leading-6 text-black/55">{service.description}</p>
+                  </div>
+                  <div className="mt-6 flex items-center justify-between border-t border-black/10 pt-4 text-[9px] font-bold uppercase tracking-[0.16em]">
+                    <span>{service.priceNote}</span>
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-white transition group-hover:rotate-45"><ArrowUpRight className="h-4 w-4" /></span>
+                  </div>
                 </div>
-              </div>
-
-              <div className="p-6 pt-0 border-t border-slate-100 mt-2">
-                <a
-                  href="#reservation"
-                  className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#76591E] hover:text-navy-900 transition pt-3"
-                >
-                  <span>Book This Service</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </div>
+              </a>
+            </article>
           ))}
         </div>
-
       </div>
     </section>
   );

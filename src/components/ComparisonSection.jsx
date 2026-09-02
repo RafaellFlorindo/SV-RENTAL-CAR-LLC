@@ -1,136 +1,52 @@
-import React, { useState, useRef } from 'react';
-import { ArrowRight, Sparkles, ShieldCheck, MapPin } from 'lucide-react';
-import { companyInfo } from '../data/company';
+import React from 'react';
+import { ArrowUpRight, Check } from 'lucide-react';
+import { airportTransfer } from '../assets/generated';
+
+const steps = [
+  ['01', 'Before', 'Flight status, timing and route are checked before the vehicle leaves.'],
+  ['02', 'At pickup', 'A spotless, cooled cabin arrives early — with your driver already briefed.'],
+  ['03', 'On the road', 'Quiet, direct travel with the flexibility to adjust stops as your day changes.']
+];
 
 export default function ComparisonSection() {
-  const [sliderPos, setSliderPos] = useState(50);
-  const containerRef = useRef(null);
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width));
-    setSliderPos((x / rect.width) * 100);
-  };
-
-  const handleTouchMove = (e) => {
-    if (!containerRef.current || !e.touches[0]) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(e.touches[0].clientX - rect.left, rect.width));
-    setSliderPos((x / rect.width) * 100);
-  };
-
   return (
-    <section id="experience" className="py-20 lg:py-24 bg-white text-navy-950 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Left Column (matching reference) */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5 text-gold" />
-              <span>THE SV CHAUFFEUR STANDARD</span>
-            </div>
+    <section id="experience" className="overflow-hidden bg-[#FBF8F2] py-24 lg:py-32">
+      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-5">
+            <div className="section-kicker text-black/55">The SV standard</div>
+            <h2 className="display-balance mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">Prepared before you step outside.</h2>
+            <p className="mt-6 max-w-md text-sm leading-7 text-black/55">The luxury is not just the vehicle. It is everything that was already handled before you arrived.</p>
 
-            <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-navy-900 tracking-tight leading-tight">
-              FROM RESERVATION TO FIRST-CLASS ARRIVAL
-            </h2>
-
-            <p className="text-sm text-slate-600 leading-relaxed font-light">
-              See how our meticulous preparation moves from flight tracking and cabin disinfection to punctual curbside arrival and smooth desert navigation.
-            </p>
-
-            {/* 2 Feature Highlight Boxes (matching reference) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
-              <div className="p-4 rounded bg-[#FAF8F5] border border-[#E9E1D1]">
-                <div className="text-navy-900 font-bold text-xs uppercase tracking-wider mb-1">
-                  1. PRE-TRIP SANITIZATION
+            <div className="mt-10 border-t border-black/15">
+              {steps.map(([number, title, description]) => (
+                <div key={number} className="grid grid-cols-[42px_1fr] gap-4 border-b border-black/15 py-6">
+                  <span className="font-serif text-lg italic text-gold">{number}</span>
+                  <div>
+                    <h3 className="text-[11px] font-bold uppercase tracking-[0.16em]">{title}</h3>
+                    <p className="mt-2 text-xs leading-6 text-black/55">{description}</p>
+                  </div>
                 </div>
-                <p className="text-[11px] text-slate-600 leading-relaxed">
-                  Pristine leather, climate pre-cooled for Arizona heat, and complimentary chilled water.
-                </p>
-              </div>
-
-              <div className="p-4 rounded bg-[#FAF8F5] border border-[#E9E1D1]">
-                <div className="text-navy-900 font-bold text-xs uppercase tracking-wider mb-1">
-                  2. FLIGHT &amp; ROUTE WATCH
-                </div>
-                <p className="text-[11px] text-slate-600 leading-relaxed">
-                  Real-time PHX/SDL flight monitoring ensures your chauffeur is curbside 10 minutes prior.
-                </p>
-              </div>
+              ))}
             </div>
 
-            <div className="pt-2">
-              <a
-                href="#reservation"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#0F1E33] hover:bg-[#182C4A] text-white font-bold text-xs uppercase tracking-wider rounded transition shadow"
-              >
-                <span>Reserve Your Chauffeur</span>
-                <ArrowRight className="w-3.5 h-3.5 text-gold" />
-              </a>
-            </div>
+            <a href="#reservation" className="mt-8 inline-flex items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white transition hover:bg-gold">Reserve your chauffeur <ArrowUpRight className="h-4 w-4" /></a>
           </div>
 
-          {/* Right Column: Interactive Before & After Comparison Slider (matching reference image) */}
-          <div className="lg:col-span-7">
-            <div
-              ref={containerRef}
-              onMouseMove={handleMouseMove}
-              onTouchMove={handleTouchMove}
-              className="relative h-[380px] sm:h-[440px] rounded-2xl overflow-hidden shadow-2xl border border-slate-300 select-none cursor-ew-resize bg-slate-900"
-            >
-              {/* After Image (Full width background) */}
-              <img
-                src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=85"
-                alt="SV Rental Car Luxury First Class"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute top-4 right-4 bg-[#0F1E33]/90 backdrop-blur-md px-3 py-1 rounded text-gold text-xs font-bold uppercase tracking-wider shadow border border-gold/30">
-                SV Private Chauffeur
+          <div className="relative lg:col-span-7 lg:pl-8">
+            <div className="relative aspect-[4/5] overflow-hidden sm:aspect-[5/4] lg:aspect-[4/5]">
+              <img src={airportTransfer} alt="Prepared airport chauffeur service" className="h-full w-full object-cover" loading="lazy" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between border border-white/25 bg-black/35 p-4 text-white backdrop-blur-md sm:bottom-7 sm:left-7 sm:right-auto sm:min-w-[320px]">
+                <span className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.16em]"><Check className="h-4 w-4 text-gold" />PHX flight monitored</span>
+                <span className="font-serif text-xl italic">On time</span>
               </div>
-              <div className="absolute bottom-4 right-4 bg-[#0F1E33]/90 backdrop-blur-md px-3.5 py-1.5 rounded text-white text-xs font-medium border border-white/10 shadow max-w-[260px]">
-                ✨ Spotless luxury SUV, flight tracking &amp; personal driver
-              </div>
-
-              {/* Before Image (Clipped overlay) */}
-              <div
-                className="absolute inset-0 overflow-hidden"
-                style={{ width: `${sliderPos}%` }}
-              >
-                <img
-                  src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1200&q=70"
-                  alt="Standard Rideshare Experience"
-                  className="absolute inset-0 w-[1000px] sm:w-[1200px] max-w-none h-full object-cover filter grayscale contrast-150 brightness-50"
-                />
-                <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1 rounded text-white text-xs font-bold uppercase tracking-wider shadow">
-                  Standard Rideshare
-                </div>
-                <div className="absolute bottom-4 left-4 bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded text-slate-300 text-xs font-medium border border-white/10 shadow max-w-[240px]">
-                  ❌ Surge pricing, delayed pickups &amp; unknown drivers
-                </div>
-              </div>
-
-              {/* Divider Line & Handle */}
-              <div
-                className="absolute top-0 bottom-0 w-1 bg-white shadow-2xl z-20"
-                style={{ left: `${sliderPos}%` }}
-              >
-                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-9 h-9 bg-white rounded-full shadow-2xl flex items-center justify-center text-navy-950 font-extrabold text-xs border border-slate-300">
-                  ↔
-                </div>
-              </div>
-
             </div>
-            
-            <p className="text-center text-xs text-slate-400 mt-2">
-              Arraste a barra para comparar a experiência do motorista particular vs aplicativo comum.
-            </p>
+            <div className="absolute -right-12 -top-8 hidden h-28 w-28 rounded-full border border-gold/40 text-gold lg:flex lg:items-center lg:justify-center">
+              <span className="rotate-12 text-center text-[8px] font-bold uppercase leading-4 tracking-[0.2em]">Scottsdale<br />Arizona</span>
+            </div>
           </div>
-
         </div>
-
       </div>
     </section>
   );
