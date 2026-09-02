@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600&display=swap');
+
+:root {
+  --color-onyx: #090D12;
+  --color-midnight: #0F1722;
+  --color-card-dark: #151F2D;
+  --color-gold: #C5A059;
+  --color-gold-light: #E0C58A;
+  --color-gold-dark: #9A7B38;
+  --color-cream: #F9F7F2;
+  --color-slate-light: #94A3B8;
+  --color-slate-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: var(--color-onyx);
+  color: #E2E8F0;
+  overflow-x: hidden;
+}
+
+.font-serif-display {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-editorial {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Gold Gradient Effects */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #F3E5C8 0%, #C5A059 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #C5A059 0%, #B89248 50%, #9A7B38 100%);
+}
+
+.bg-gold-gradient-hover:hover {
+  background: linear-gradient(135deg, #D6B26A 0%, #C5A059 50%, #A98741 100%);
+}
+
+.border-gold-glow {
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  box-shadow: 0 0 20px rgba(197, 160, 89, 0.12);
+}
+
+.gold-glow-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gold-glow-hover:hover {
+  border-color: rgba(197, 160, 89, 0.6);
+  box-shadow: 0 10px 30px rgba(197, 160, 89, 0.2);
+  transform: translateY(-4px);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(15, 23, 34, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Luxury Card */
+.luxury-card {
+  background: #111A26;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.35s ease;
+}
+
+.luxury-card:hover {
+  border-color: rgba(197, 160, 89, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), 0 0 25px rgba(197, 160, 89, 0.15);
+  transform: translateY(-5px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090D12;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #202D3E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C5A059;
+}
+
+/* Accordion Animations */
+.faq-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s cubic-bezier(0, 1, 0, 1), opacity 0.3s ease;
+  opacity: 0;
+}
+
+.faq-item.active .faq-content {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: #C5A059;
+}
+
+/* Pulse animation for CTA */
+@keyframes pulse-subtle {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(197, 160, 89, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(197, 160, 89, 0);
+  }
+}
+
+.pulse-gold {
+  animation: pulse-subtle 2.5s infinite;
+}
