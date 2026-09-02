@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Menu, X, ArrowRight } from 'lucide-react';
 import { companyInfo } from '../data/company';
+import SvLogo from '../assets/logo/SvLogo';
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -9,19 +10,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-[#0F1E33] border-b border-white/10 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
-        {/* Brand Logo */}
+        {/* Bespoke Brand Logo */}
         <a href="#" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded bg-gradient-to-br from-gold via-gold-light to-gold-dark flex items-center justify-center text-navy-950 font-serif font-extrabold text-xl shadow">
-            SV
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif font-bold text-lg tracking-wider text-white uppercase">
-              {companyInfo.name}
-            </span>
-            <span className="text-[10px] tracking-widest uppercase text-gold font-semibold">
-              Private Chauffeur & Charter
-            </span>
-          </div>
+          <SvLogo />
         </a>
 
         {/* Center Desktop Navigation */}

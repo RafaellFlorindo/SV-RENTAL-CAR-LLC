@@ -1,5 +1,6 @@
 import React from 'react';
 import { companyInfo } from '../data/company';
+import SvLogo from '../assets/logo/SvLogo';
 import GhlChatWidget from './GhlChatWidget';
 
 export default function Footer() {
@@ -9,20 +10,10 @@ export default function Footer() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Brand Info */}
+          {/* Brand Info with Bespoke SVG Logo */}
           <div className="space-y-3">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded bg-gold text-navy-950 font-serif font-extrabold flex items-center justify-center text-lg">
-                SV
-              </div>
-              <div>
-                <span className="font-serif font-bold text-white text-base block">{companyInfo.name}</span>
-                <span className="text-[10px] text-gold uppercase tracking-wider font-semibold">
-                  Private Chauffeur &amp; Charter
-                </span>
-              </div>
-            </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <SvLogo />
+            <p className="text-xs text-slate-400 leading-relaxed pt-2">
               Family-owned luxury transportation committed to safety, discretion, and passenger comfort across Scottsdale and Phoenix, AZ.
             </p>
             <div className="text-[11px] text-slate-400 space-y-0.5 pt-1">
@@ -39,7 +30,7 @@ export default function Footer() {
               <li><a href="#services" className="hover:text-gold transition">Golf Tournament Transit</a></li>
               <li><a href="#services" className="hover:text-gold transition">Airport Transfers (PHX/SDL)</a></li>
               <li><a href="#services" className="hover:text-gold transition">Dedicated Female Driver</a></li>
-              <li><a href="#services" className="hover:text-gold transition">Executive Corridas Particulares</a></li>
+              <li><a href="#services" className="hover:text-gold transition">Executive Private Rides</a></li>
             </ul>
           </div>
 

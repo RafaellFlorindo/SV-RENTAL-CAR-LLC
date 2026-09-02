@@ -1,6 +1,7 @@
 import React from 'react';
 import { User, Phone } from 'lucide-react';
 import { companyInfo } from '../data/company';
+import SvLogo from '../assets/logo/SvLogo';
 
 export default function AboutStory() {
   return (
@@ -44,10 +45,8 @@ export default function AboutStory() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white rounded-xl p-6 border border-slate-200 text-center shadow-sm">
-              <div className="w-16 h-16 rounded bg-gradient-to-br from-gold via-gold-light to-gold-dark text-navy-950 flex items-center justify-center mx-auto mb-3 font-serif font-bold text-2xl shadow">
-                SV
-              </div>
+            <div className="lg:col-span-5 bg-white rounded-xl p-6 border border-slate-200 text-center shadow-sm flex flex-col items-center">
+              <SvLogo showText={false} className="w-16 h-16 mb-3" />
               <h3 className="text-lg font-serif font-bold text-navy-900">João Victor Gois Dias</h3>
               <p className="text-xs text-gold-dark uppercase tracking-widest font-semibold mt-0.5">
                 Founder &amp; Executive Chauffeur
@@ -55,7 +54,7 @@ export default function AboutStory() {
               <p className="text-xs text-slate-500 mt-2 max-w-xs mx-auto italic">
                 "We care deeply about the comfort and safety of every passenger we welcome into our vehicles."
               </p>
-              <div className="mt-5 pt-5 border-t border-slate-100 flex justify-center">
+              <div className="mt-5 pt-5 border-t border-slate-100 flex justify-center w-full">
                 <a
                   href={`tel:${companyInfo.phoneRaw}`}
                   className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#0F1E33] hover:bg-[#182C4A] px-5 py-2.5 rounded transition shadow"
