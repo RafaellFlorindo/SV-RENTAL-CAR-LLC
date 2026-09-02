@@ -5,26 +5,26 @@ import { companyInfo } from '../data/company';
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] flex items-center py-16 lg:py-20 bg-navy-950 overflow-hidden">
-      {/* Background with luxury gradient overlay */}
+    <section className="relative min-h-[85vh] flex items-center py-16 lg:py-20 bg-[#0A1627] overflow-hidden">
+      {/* Background image with realistic lighting */}
       <div className="absolute inset-0 z-0">
         <img
           src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=2000&q=85"
           alt="Luxury Chauffeur Service Arizona"
-          className="w-full h-full object-cover object-center opacity-30 filter brightness-75 scale-105"
+          className="w-full h-full object-cover object-center opacity-30 filter brightness-90 scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-navy-950/70"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A1627] via-[#0A1627]/90 to-[#0A1627]/60"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A1627] via-transparent to-transparent"></div>
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
-          {/* Left Column (7 cols) */}
+          {/* Left Column (matching reference) */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 border border-gold/40 text-gold-light text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5 text-gold" />
-              <span>Scottsdale & Phoenix Luxury Transportation</span>
+              <span>Scottsdale &amp; Phoenix Luxury Transportation</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif font-extrabold text-white tracking-tight leading-[1.12]">
@@ -36,9 +36,9 @@ export default function Hero() {
               Family-owned premier private chauffeur and hourly car service. Meticulously chauffeured transportation for golf outings, corporate events, airport transfers, and private rides across Scottsdale, Phoenix, Glendale, Tempe, and Gilbert.
             </p>
 
-            {/* Social Proof Badges */}
+            {/* Social Proof Badges (matching reference avatars and stars) */}
             <div className="flex flex-wrap items-center gap-6 pt-2">
-              <div className="flex items-center gap-2 bg-navy-900/90 px-3.5 py-2 rounded border border-white/10">
+              <div className="flex items-center gap-2 bg-[#10223A] px-3.5 py-2 rounded border border-white/10">
                 <div className="flex text-amber-400">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
@@ -54,7 +54,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Column: Hero Lead Capture Card (5 cols) */}
+          {/* Right Column: Hero Lead Capture Card with Dedicated GHL Slot */}
           <div className="lg:col-span-5" id="reservation">
             <div className="bg-[#12233B] rounded-2xl p-6 sm:p-7 border border-white/10 shadow-2xl relative">
               
@@ -66,7 +66,7 @@ export default function Hero() {
                 <p className="text-xs text-slate-300 mt-0.5">Flexible 24/7 Service · Hourly Charters From 4h</p>
               </div>
 
-              {/* Dedicated GHL Form Slot */}
+              {/* GHL Form Component */}
               <GhlFormEmbed formId="ghl-hero-form" />
 
             </div>
