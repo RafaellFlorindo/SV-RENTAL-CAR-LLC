@@ -20,13 +20,13 @@ export default function ServicesGrid() {
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <div className="mb-14 grid items-end gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <div className="section-kicker text-black/55">Built around your itinerary</div>
+            <div className="section-kicker text-black/55">Private chauffeur services</div>
             <h2 className="display-balance mt-6 max-w-4xl font-serif text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
-              One driver. Every version of your day.
+              One trusted driver for the whole itinerary.
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-7 text-black/55 lg:col-span-4 lg:justify-self-end">
-            From the first tee to the final flight, every ride is planned with the same careful timing, polished vehicle and personal attention.
+            Airport at 6. Tee time at 10. Dinner across town at 8. Choose the service that keeps your plans moving without switching drivers or chasing rides.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export default function ServicesGrid() {
             <article key={service.id} className={`group overflow-hidden border border-black/15 bg-[#FBF8F2] transition duration-500 hover:-translate-y-1 hover:shadow-card md:col-span-1 ${spans[index]}`}>
               <a href="#reservation" className="block h-full">
                 <div className={`relative overflow-hidden bg-black ${index < 2 ? 'h-72 sm:h-80' : 'h-60'}`}>
-                  <img src={images[service.id]} alt={service.title} className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
+                  <img src={images[service.id]} alt={`${service.title} in Scottsdale and Phoenix, Arizona`} width="1400" height="933" decoding="async" className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-black/5" />
                   <span className="absolute left-4 top-4 rounded-full bg-[#F4EFE6]/95 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.14em] text-black backdrop-blur-sm">{service.tag}</span>
                   <span className="absolute bottom-4 left-4 font-serif text-3xl italic text-white/95">0{index + 1}</span>
@@ -48,7 +48,7 @@ export default function ServicesGrid() {
                   </div>
                   <div className="mt-6 flex items-center justify-between border-t border-black/10 pt-4 text-[9px] font-bold uppercase tracking-[0.16em]">
                     <span>{service.priceNote}</span>
-                    <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-white transition group-hover:rotate-45"><ArrowUpRight className="h-4 w-4" /></span>
+                    <span className="flex items-center gap-2">Check <span className="flex h-9 w-9 items-center justify-center rounded-full bg-gold text-white transition group-hover:rotate-45"><ArrowUpRight className="h-4 w-4" /></span></span>
                   </div>
                 </div>
               </a>

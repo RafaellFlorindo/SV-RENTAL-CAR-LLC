@@ -2,11 +2,11 @@ import React from 'react';
 import { Clock3, ShieldCheck, UserRoundCheck, Plane, MapPin } from 'lucide-react';
 
 const facts = [
-  [Clock3, '24/7', 'By prior reservation'],
+  [Clock3, '24/7', 'By advance reservation'],
   [ShieldCheck, 'Private', 'Licensed & insured'],
-  [UserRoundCheck, 'Personal', 'The same trusted team'],
-  [Plane, 'Flight-aware', 'PHX & SDL monitored'],
-  [MapPin, 'Valley-wide', 'Scottsdale + Phoenix']
+  [UserRoundCheck, 'Personal', 'One trusted local team'],
+  [Plane, 'Flight tracking', 'PHX, SDL & AZA'],
+  [MapPin, 'Valley-wide', 'Scottsdale to Gilbert']
 ];
 
 export default function TrustBar() {

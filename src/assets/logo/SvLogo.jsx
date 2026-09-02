@@ -9,6 +9,9 @@ export default function SvLogo({ className = '', showText = true, variant = 'dar
       <img
         src={svMonogram}
         alt="SV Rental Car monogram"
+        width="600"
+        height="600"
+        decoding="async"
         className={`h-12 w-12 shrink-0 rounded-full bg-[#131514] object-contain ring-1 ${inverted ? 'ring-white/20' : 'ring-black/15'}`}
       />
       {showText && (

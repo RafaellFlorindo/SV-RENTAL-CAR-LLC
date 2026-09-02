@@ -8,9 +8,9 @@ export default function ServiceAreas() {
       <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <span className="section-kicker text-black/55">Valley-wide coverage</span>
-            <h2 className="display-balance mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">Arizona is our route.</h2>
-            <p className="mt-6 max-w-sm text-sm leading-7 text-black/55">Based in Scottsdale and serving the places business, golf, flights and good nights take you.</p>
+            <span className="section-kicker text-black/55">Private rides across the Valley</span>
+            <h2 className="display-balance mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">One call covers the whole Valley.</h2>
+            <p className="mt-6 max-w-sm text-sm leading-7 text-black/55">Start in Scottsdale, land at PHX, meet in Tempe or finish the night in Gilbert. Your driver plans the route around the places on your schedule.</p>
           </div>
 
           <div className="border-t border-black/20 lg:col-span-7 lg:col-start-6">

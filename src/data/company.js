@@ -14,7 +14,7 @@ export const companyInfo = {
     country: "USA",
     full: "3620 N Miller Rd, Scottsdale, AZ, 85251-4537, Maricopa County, USA"
   },
-  hours: "24/7 - Flexible By Prior Reservation",
+  hours: "24/7, flexible by advance reservation",
   experienceYears: "3+",
   discountOffer: "10% OFF for Referrals & Return Bookings"
 };

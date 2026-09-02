@@ -1,0 +1,16 @@
+{
+  "name": "SV Rental Car LLC",
+  "short_name": "SV Rental Car",
+  "description": "Private chauffeur service in Scottsdale and Phoenix, Arizona.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4EFE6",
+  "theme_color": "#131514",
+  "icons": [
+    {
+      "src": "/sv-rental-car-logo.png",
+      "sizes": "600x600",
+      "type": "image/png"
+    }
+  ]
+}

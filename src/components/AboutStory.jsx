@@ -15,16 +15,16 @@ export default function AboutStory() {
         </div>
 
         <div className="lg:col-span-7 lg:col-start-6">
-          <h2 className="display-balance font-serif text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">This company began with a simple idea: care travels.</h2>
+          <h2 className="display-balance font-serif text-5xl font-semibold leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">Built by a family that treats your schedule like their own.</h2>
           <div className="mt-9 grid gap-8 border-t border-white/25 pt-8 sm:grid-cols-2">
-            <p className="text-sm leading-7 text-white/80">Founded by <strong className="text-white">{companyInfo.founders}</strong>, SV Rental Car brings personal accountability to private transportation across Arizona.</p>
-            <p className="text-sm leading-7 text-white/80">Every reservation is handled with the comfort, punctuality and attention we would want for our own family.</p>
+            <p className="text-sm leading-7 text-white/80">Founded by <strong className="text-white">{companyInfo.founders}</strong>, SV Rental Car gives Scottsdale and Phoenix travelers a direct alternative to anonymous rides and last-minute uncertainty.</p>
+            <p className="text-sm leading-7 text-white/80">The family team handles each reservation from first message to final drop-off, so responsibility never gets passed to someone else.</p>
           </div>
 
-          <blockquote className="mt-12 border-l border-white/40 pl-6 font-serif text-3xl italic leading-tight text-white sm:text-4xl">“We want every passenger to feel looked after before the car even arrives.”</blockquote>
+          <blockquote className="mt-12 border-l border-white/40 pl-6 font-serif text-3xl italic leading-tight text-white sm:text-4xl">“When someone rides with us, their schedule becomes our responsibility.”</blockquote>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white transition hover:bg-white hover:text-black"><Phone className="h-4 w-4" />Talk to João</a>
-            <a href="#reservation" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white">Plan a ride <ArrowUpRight className="h-4 w-4" /></a>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white transition hover:bg-white hover:text-black"><Phone className="h-4 w-4" />Call João directly</a>
+            <a href="#reservation" className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white">Check my date <ArrowUpRight className="h-4 w-4" /></a>
           </div>
         </div>
       </div>

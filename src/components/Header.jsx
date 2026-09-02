@@ -7,6 +7,7 @@ const navItems = [
   ['Services', '#services'],
   ['The standard', '#experience'],
   ['Why SV', '#why-us'],
+  ['Testimonials', '#testimonials'],
   ['Our story', '#about'],
   ['FAQ', '#faq']
 ];
@@ -32,7 +33,7 @@ export default function Header() {
             <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
           </a>
           <a href="#reservation" className="inline-flex items-center gap-2 rounded-full bg-[#131514] px-5 py-3 text-[10px] font-bold uppercase tracking-[0.16em] text-white transition hover:bg-gold">
-            Reserve a ride <ArrowUpRight className="h-3.5 w-3.5" />
+            Check availability <ArrowUpRight className="h-3.5 w-3.5" />
           </a>
         </div>
 
@@ -49,7 +50,7 @@ export default function Header() {
                 {label}<span className="font-sans text-[10px] text-gold">0{index + 1}</span>
               </a>
             ))}
-            <a href="#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center rounded-full bg-gold px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white">Reserve a ride</a>
+            <a href="#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center rounded-full bg-gold px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-white">Check ride availability</a>
           </nav>
         </div>
       )}

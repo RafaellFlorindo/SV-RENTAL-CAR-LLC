@@ -1,4 +1,4 @@
-# SV RENTAL CAR LLC — Official Website
+# SV RENTAL CAR LLC Official Website
 
 Modern luxury private chauffeur & car rental website for **SV RENTAL CAR LLC** based in Scottsdale, Arizona.
 
@@ -23,33 +23,37 @@ Modern luxury private chauffeur & car rental website for **SV RENTAL CAR LLC** b
 
 ---
 
-## 🔌 How to Integrate Your GoHighLevel (GHL) Form & Chat Widget
+## 🔌 GoHighLevel integration
 
-### 1. Inserting your GoHighLevel Form iFrame:
-Open `index.html` and locate the dedicated container:
-- **Hero Form Container:** `<div id="ghl-hero-form-slot">`
-- **Contact Section Container:** `<div id="ghl-contact-form-slot">`
+The production form and chat widget are configured in:
 
-Simply replace the `<form class="ghl-fallback-form">...</form>` inside either container with your GoHighLevel `<iframe>` embed code.
+- `src/components/GhlFormEmbed.jsx`
+- `src/components/GhlChatWidget.jsx`
 
-### 2. Inserting your GoHighLevel Chat Widget:
-Open `index.html` and go to the placeholder directly before `</body>`:
-```html
-<div id="ghl-chat-widget-placeholder">
-  <!-- Paste your GHL Chat Widget script tag here -->
-</div>
-```
-Paste your LeadConnector / GoHighLevel chat widget script tag there.
+## 🚀 Local development
 
----
-
-## 🚀 How to Preview the Site Locally
-Open a terminal in this directory and run:
 ```bash
-# Using Python
-python3 -m http.server 8080
-
-# Or using Node.js
-npx serve .
+npm install
+npm run dev
 ```
-Then visit `http://localhost:8080` in your web browser.
+
+## Production build
+
+```bash
+npm ci
+npm run build
+npm run preview -- --host 0.0.0.0
+```
+
+Do not serve the repository root with `npx serve .` or `python -m http.server`. The root `index.html` is the Vite development entry and references `/src/main.jsx`. Production hosting must serve the generated `dist` directory.
+
+## EasyPanel deployment
+
+The repository includes a multi-stage `Dockerfile`. EasyPanel detects it automatically when the Build Path points to the repository root.
+
+- Builder: `Dockerfile`
+- Dockerfile path: `Dockerfile`
+- Target port: `8080`
+- Health check path: `/healthz`
+
+The final container serves only the compiled `dist` files through Nginx and includes SPA routing fallback.

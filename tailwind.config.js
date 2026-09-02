@@ -27,8 +27,8 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Bodoni Moda"', 'Georgia', 'serif'],
-        sans: ['"Archivo"', 'system-ui', 'sans-serif']
+        serif: ['"Inter"', 'system-ui', 'sans-serif'],
+        sans: ['"Inter"', 'system-ui', 'sans-serif']
       },
       boxShadow: {
         editorial: '0 24px 80px rgba(19, 21, 20, 0.14)',

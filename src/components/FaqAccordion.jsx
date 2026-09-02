@@ -10,9 +10,9 @@ export default function FaqAccordion() {
     <section id="faq" className="bg-[#FBF8F2] py-24 lg:py-32">
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 lg:grid-cols-12 lg:px-8">
         <div className="lg:col-span-4">
-          <span className="section-kicker text-black/55">Good to know</span>
-          <h2 className="mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">Questions, answered plainly.</h2>
-          <a href={`tel:${companyInfo.phoneRaw}`} className="mt-8 inline-flex items-center gap-3 rounded-full border border-black/20 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.14em] transition hover:border-gold hover:text-gold"><Phone className="h-4 w-4" />Ask dispatch</a>
+          <span className="section-kicker text-black/55">Before you book</span>
+          <h2 className="mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl">Straight answers before you get in.</h2>
+          <a href={`tel:${companyInfo.phoneRaw}`} className="mt-8 inline-flex items-center gap-3 rounded-full border border-black/20 px-5 py-3.5 text-[10px] font-bold uppercase tracking-[0.14em] transition hover:border-gold hover:text-gold"><Phone className="h-4 w-4" />Ask about my ride</a>
         </div>
 
         <div className="border-t border-black/20 lg:col-span-7 lg:col-start-6">

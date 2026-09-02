@@ -1,35 +1,17 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
-/**
- * GhlChatWidget
- * Designated placeholder for the GoHighLevel (GHL) Chat Widget script.
- * 
- * INSTRUCTIONS:
- * When you export your Chat Widget code from GoHighLevel / LeadConnector,
- * you can pass your script URL as the `scriptUrl` prop or paste it directly in index.html.
- */
-export default function GhlChatWidget({ scriptUrl = null }) {
+export default function GhlChatWidget() {
   useEffect(() => {
-    if (!scriptUrl) return;
+    if (document.getElementById('ghl-chat-widget-script')) return;
 
     const script = document.createElement('script');
-    script.src = scriptUrl;
-    script.async = true;
     script.id = 'ghl-chat-widget-script';
+    script.src = 'https://widgets.leadconnectorhq.com/loader.js';
+    script.async = true;
+    script.setAttribute('data-resources-url', 'https://widgets.leadconnectorhq.com/chat-widget/loader.js');
+    script.setAttribute('data-widget-id', '6a973392eb06b512c20537ad');
     document.body.appendChild(script);
+  }, []);
 
-    return () => {
-      const existing = document.getElementById('ghl-chat-widget-script');
-      if (existing) existing.remove();
-    };
-  }, [scriptUrl]);
-
-  return (
-    <div id="ghl-chat-widget-container" className="fixed bottom-4 right-4 z-40">
-      {/* ========================================================================
-          GOHIGHLEVEL (GHL) CHAT WIDGET SLOT
-          Cole o script do LeadConnector / GoHighLevel Chat Widget aqui.
-          ======================================================================== */}
-    </div>
-  );
+  return null;
 }

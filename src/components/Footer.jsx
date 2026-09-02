@@ -9,17 +9,17 @@ export default function Footer() {
     <footer className="bg-[#131514] text-white">
       <div className="border-b border-white/15 bg-gold">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-6 px-5 py-10 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <h2 className="font-serif text-4xl font-semibold leading-none sm:text-5xl">Your ride is ready when you are.</h2>
-          <a href="#reservation" className="inline-flex w-fit items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em]">Check availability <ArrowUpRight className="h-4 w-4" /></a>
+          <h2 className="font-serif text-4xl font-semibold leading-none sm:text-5xl">Tell us where you are going. We will handle the road.</h2>
+          <a href="#reservation" className="inline-flex w-fit items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em]">Get my ride quote <ArrowUpRight className="h-4 w-4" /></a>
         </div>
       </div>
 
       <div className="mx-auto max-w-[1440px] px-5 py-16 lg:px-8">
         <div className="grid gap-12 border-b border-white/15 pb-14 md:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-5"><SvLogo variant="light" /><p className="mt-6 max-w-sm text-xs leading-6 text-white/45">Family-owned private chauffeur service for Scottsdale, Phoenix and the Valley of the Sun.</p></div>
+          <div className="lg:col-span-5"><SvLogo variant="light" /><p className="mt-6 max-w-sm text-xs leading-6 text-white/45">A family-owned private chauffeur service for airport transfers, golf outings, business travel and special events across Scottsdale and Phoenix.</p></div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Explore</h3>
-            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60"><a href="#services" className="hover:text-white">Services</a><a href="#experience" className="hover:text-white">The standard</a><a href="#about" className="hover:text-white">Our story</a><a href="#faq" className="hover:text-white">FAQ</a></nav>
+            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60"><a href="#services" className="hover:text-white">Services</a><a href="#experience" className="hover:text-white">The standard</a><a href="#testimonials" className="hover:text-white">Testimonials</a><a href="#about" className="hover:text-white">Our story</a><a href="#faq" className="hover:text-white">FAQ</a></nav>
           </div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Service area</h3>
