@@ -57,3 +57,5 @@ The repository includes a multi-stage `Dockerfile`. EasyPanel detects it automat
 - Health check path: `/healthz`
 
 The final container serves only the compiled `dist` files through Nginx and includes SPA routing fallback.
+
+If the service already has Nixpacks or Railpack saved as its builder, the repository also includes explicit configuration for both. In every supported builder, the production start command serves only `dist` on the EasyPanel `PORT` value.
