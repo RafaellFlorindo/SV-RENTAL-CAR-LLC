@@ -2,34 +2,34 @@ import React, { useEffect } from 'react';
 
 /**
  * GhlChatWidget
- * Mounts the GoHighLevel Live Chat widget script.
- * When you have your GHL script URL or code, update the script src below.
+ * Designated placeholder for the GoHighLevel (GHL) Chat Widget script.
+ * 
+ * INSTRUCTIONS:
+ * When you export your Chat Widget code from GoHighLevel / LeadConnector,
+ * you can pass your script URL as the `scriptUrl` prop or paste it directly in index.html.
  */
-export default function GhlChatWidget({ widgetScriptUrl = null }) {
+export default function GhlChatWidget({ scriptUrl = null }) {
   useEffect(() => {
-    if (!widgetScriptUrl) return;
+    if (!scriptUrl) return;
 
     const script = document.createElement('script');
-    script.src = widgetScriptUrl;
+    script.src = scriptUrl;
     script.async = true;
-    script.id = 'ghl-chat-script';
+    script.id = 'ghl-chat-widget-script';
     document.body.appendChild(script);
 
     return () => {
-      const existing = document.getElementById('ghl-chat-script');
+      const existing = document.getElementById('ghl-chat-widget-script');
       if (existing) existing.remove();
     };
-  }, [widgetScriptUrl]);
+  }, [scriptUrl]);
 
   return (
-    <div id="ghl-chat-widget-slot" className="hidden">
-      {/* 
-        ========================================================================
-        GOHIGHLEVEL CHAT WIDGET PLACEHOLDER:
-        When ready, pass your script URL to <GhlChatWidget widgetScriptUrl="..." />
-        or paste your LeadConnector script tag in index.html right before </body>.
-        ========================================================================
-      */}
+    <div id="ghl-chat-widget-container" className="fixed bottom-4 right-4 z-40">
+      {/* ========================================================================
+          GOHIGHLEVEL (GHL) CHAT WIDGET SLOT
+          Cole o script do LeadConnector / GoHighLevel Chat Widget aqui.
+          ======================================================================== */}
     </div>
   );
 }

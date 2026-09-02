@@ -31,9 +31,9 @@ export default function TrustBar() {
   ];
 
   return (
-    <section className="bg-midnight border-y border-white/10 py-5">
+    <section className="bg-[#11233D] border-y border-white/10 py-4 text-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
           {badges.map((b, idx) => {
             const Icon = b.icon;
             return (
@@ -43,9 +43,9 @@ export default function TrustBar() {
                   idx === 4 ? 'col-span-2 md:col-span-1' : ''
                 }`}
               >
-                <Icon className="w-6 h-6 text-gold mb-2" />
+                <Icon className="w-5 h-5 text-gold mb-1.5" />
                 <span className="text-xs font-bold uppercase tracking-wider text-white">{b.title}</span>
-                <span className="text-[11px] text-slate-400">{b.subtitle}</span>
+                <span className="text-[11px] text-slate-300">{b.subtitle}</span>
               </div>
             );
           })}

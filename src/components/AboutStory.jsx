@@ -1,70 +1,74 @@
 import React from 'react';
-import { User, PhoneCall } from 'lucide-react';
+import { User, Phone } from 'lucide-react';
 import { companyInfo } from '../data/company';
 
 export default function AboutStory() {
   return (
-    <section id="about" className="py-20 lg:py-28 bg-onyx relative overflow-hidden">
+    <section id="about" className="py-20 bg-white text-navy-950 border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-card/75 backdrop-blur-xl rounded-3xl p-8 sm:p-12 border border-white/10 relative">
+        
+        <div className="bg-[#FAF8F5] border border-[#E9E1D1] rounded-2xl p-8 sm:p-12 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
-            <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-xs font-bold uppercase tracking-widest">
-                <User className="w-3.5 h-3.5" />
+            <div className="lg:col-span-7 space-y-5">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest">
+                <User className="w-3.5 h-3.5 text-gold" />
                 <span>ABOUT {companyInfo.name}</span>
               </div>
 
-              <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white tracking-tight">
-                A Family Dream Built on Comfort, Safety & Trust
+              <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-navy-900 tracking-tight">
+                A Family Dream Built on Comfort, Safety &amp; Trust
               </h2>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                <strong className="text-white font-semibold">{companyInfo.name}</strong> is a family-owned business founded by <strong className="text-gold font-semibold">{companyInfo.founders}</strong>. Our journey began with a single vision: to bring genuine comfort, security, and peace of mind to private chauffeured transportation.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
+                <strong className="text-navy-900 font-semibold">{companyInfo.name}</strong> is a family-owned business founded by <strong className="text-gold-dark font-semibold">{companyInfo.founders}</strong>. Our mission is to bring true peace of mind, punctuality, and luxury to private transportation across Arizona.
               </p>
 
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                With <strong className="text-white">over {companyInfo.experienceYears} years of dedicated experience</strong> in private transportation, we take immense pride in our driving standards, vehicle cleanliness, and passenger care. When you ride with us, you are not just a passenger — you are our guest.
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-light">
+                With <strong className="text-navy-900 font-medium">over {companyInfo.experienceYears} years of experience</strong> in private transportation, we take immense pride in our driving excellence and vehicle cleanliness. Every ride is managed with personal care and discretion.
               </p>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4 border-t border-white/10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-3 border-t border-slate-200">
                 <div>
-                  <span className="block text-2xl font-serif font-bold text-gold">24/7</span>
-                  <span className="text-xs text-slate-400">Flexible Hours by Appointment</span>
+                  <span className="block text-xl font-serif font-bold text-navy-900">24/7</span>
+                  <span className="text-[11px] text-slate-500">By Prior Reservation</span>
                 </div>
                 <div>
-                  <span className="block text-2xl font-serif font-bold text-gold">100%</span>
-                  <span className="text-xs text-slate-400">Licensed & Insured in AZ</span>
+                  <span className="block text-xl font-serif font-bold text-navy-900">100%</span>
+                  <span className="text-[11px] text-slate-500">Licensed &amp; Insured in AZ</span>
                 </div>
                 <div>
-                  <span className="block text-2xl font-serif font-bold text-gold">10% Off</span>
-                  <span className="text-xs text-slate-400">Referrals & Repeat Clients</span>
+                  <span className="block text-xl font-serif font-bold text-gold-dark">10% Off</span>
+                  <span className="text-[11px] text-slate-500">Referrals &amp; Return Clients</span>
                 </div>
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col items-center justify-center p-6 rounded-2xl bg-midnight border border-white/5 text-center">
-              <div className="w-20 h-20 rounded-full bg-gold/15 text-gold flex items-center justify-center mb-4 border border-gold/30 font-serif font-bold text-3xl">
+            <div className="lg:col-span-5 bg-white rounded-xl p-6 border border-slate-200 text-center shadow-sm">
+              <div className="w-16 h-16 rounded bg-gradient-to-br from-gold via-gold-light to-gold-dark text-navy-950 flex items-center justify-center mx-auto mb-3 font-serif font-bold text-2xl shadow">
                 SV
               </div>
-              <h3 className="text-xl font-serif font-bold text-white">João Victor Gois Dias</h3>
-              <p className="text-xs text-gold uppercase tracking-widest font-semibold mt-1">Founder & Executive Chauffeur</p>
-              <p className="text-xs text-slate-400 mt-3 max-w-xs">
-                "We take great pride in our driving excellence and the safety and supreme comfort of every passenger."
+              <h3 className="text-lg font-serif font-bold text-navy-900">João Victor Gois Dias</h3>
+              <p className="text-xs text-gold-dark uppercase tracking-widest font-semibold mt-0.5">
+                Founder &amp; Executive Chauffeur
               </p>
-              <div className="mt-6 pt-6 border-t border-white/10 w-full flex justify-center">
+              <p className="text-xs text-slate-500 mt-2 max-w-xs mx-auto italic">
+                "We care deeply about the comfort and safety of every passenger we welcome into our vehicles."
+              </p>
+              <div className="mt-5 pt-5 border-t border-slate-100 flex justify-center">
                 <a
                   href={`tel:${companyInfo.phoneRaw}`}
-                  className="inline-flex items-center gap-2 text-xs font-bold text-white bg-slate-800 hover:bg-slate-700 px-5 py-2.5 rounded-lg border border-white/10 transition"
+                  className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#0F1E33] hover:bg-[#182C4A] px-5 py-2.5 rounded transition shadow"
                 >
-                  <PhoneCall className="w-3.5 h-3.5 text-gold" />
-                  <span>Direct Contact: {companyInfo.phone}</span>
+                  <Phone className="w-3.5 h-3.5 text-gold" />
+                  <span>Direct: {companyInfo.phone}</span>
                 </a>
               </div>
             </div>
 
           </div>
         </div>
+
       </div>
     </section>
   );

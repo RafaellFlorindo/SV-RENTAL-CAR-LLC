@@ -4,43 +4,42 @@ import GhlChatWidget from './GhlChatWidget';
 
 export default function Footer() {
   return (
-    <footer className="bg-onyx border-t border-white/10 pt-16 pb-12 text-slate-400 text-xs">
+    <footer className="bg-[#0A1627] text-slate-300 text-xs pt-16 pb-12 border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Brand Info (2 cols) */}
-          <div className="lg:col-span-2 space-y-4">
+          {/* Brand Info */}
+          <div className="space-y-3">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-lg bg-gold flex items-center justify-center text-onyx font-serif font-extrabold text-lg">
+              <div className="w-9 h-9 rounded bg-gold text-navy-950 font-serif font-extrabold flex items-center justify-center text-lg">
                 SV
               </div>
               <div>
                 <span className="font-serif font-bold text-white text-base block">{companyInfo.name}</span>
                 <span className="text-[10px] text-gold uppercase tracking-wider font-semibold">
-                  Private Chauffeur & Luxury Transport
+                  Private Chauffeur &amp; Charter
                 </span>
               </div>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Family-owned luxury transportation committed to utmost safety, discretion, and passenger comfort in Scottsdale, Phoenix, and across Maricopa County, Arizona.
+            <p className="text-xs text-slate-400 leading-relaxed">
+              Family-owned luxury transportation committed to safety, discretion, and passenger comfort across Scottsdale and Phoenix, AZ.
             </p>
-            <div className="text-[11px] text-slate-400 space-y-1">
-              <p><strong>Legal Name:</strong> {companyInfo.name}</p>
+            <div className="text-[11px] text-slate-400 space-y-0.5 pt-1">
               <p><strong>EIN:</strong> {companyInfo.ein}</p>
               <p><strong>Founders:</strong> {companyInfo.founders}</p>
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Services Links */}
           <div className="space-y-3">
             <h4 className="font-serif font-bold text-white text-sm uppercase tracking-wider">Services</h4>
             <ul className="space-y-2 text-xs">
-              <li><a href="#services" className="hover:text-gold transition">Hourly Chauffeur (4h+)</a></li>
-              <li><a href="#services" className="hover:text-gold transition">Golf Event Transportation</a></li>
+              <li><a href="#services" className="hover:text-gold transition">Hourly Charter (Min 4h)</a></li>
+              <li><a href="#services" className="hover:text-gold transition">Golf Tournament Transit</a></li>
               <li><a href="#services" className="hover:text-gold transition">Airport Transfers (PHX/SDL)</a></li>
-              <li><a href="#services" className="hover:text-gold transition">Female Driver on Request</a></li>
-              <li><a href="#services" className="hover:text-gold transition">Corridas Particulares</a></li>
+              <li><a href="#services" className="hover:text-gold transition">Dedicated Female Driver</a></li>
+              <li><a href="#services" className="hover:text-gold transition">Executive Corridas Particulares</a></li>
             </ul>
           </div>
 
@@ -56,7 +55,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Direct Dispatch & Hours */}
+          {/* Direct Dispatch & Address */}
           <div className="space-y-3">
             <h4 className="font-serif font-bold text-white text-sm uppercase tracking-wider">Direct Dispatch</h4>
             <p className="text-xs">{companyInfo.address.full}</p>
@@ -64,8 +63,8 @@ export default function Footer() {
               {companyInfo.phone}
             </a>
             <p className="text-[11px] text-slate-400">Hours: {companyInfo.hours}</p>
-            <div className="pt-2">
-              <span className="inline-block px-3 py-1 bg-gold/10 text-gold text-[10px] font-bold rounded-full border border-gold/20">
+            <div className="pt-1">
+              <span className="inline-block px-2.5 py-1 bg-gold/15 text-gold text-[10px] font-bold rounded border border-gold/30">
                 {companyInfo.discountOffer}
               </span>
             </div>
@@ -79,7 +78,7 @@ export default function Footer() {
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-gold transition">Privacy Policy</a>
-            <a href="#" className="hover:text-gold transition">Terms & Conditions</a>
+            <a href="#" className="hover:text-gold transition">Terms &amp; Conditions</a>
             <a href="#reservation" className="hover:text-gold transition">Book Online</a>
           </div>
         </div>
