@@ -14,7 +14,7 @@ import ScrollProgress from './components/motion/ScrollProgress';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-gold selection:text-navy-950 relative">
+    <div className="min-h-screen bg-onyx text-slate-200 font-sans selection:bg-gold selection:text-onyx relative">
       {/* 21st.dev Top Scroll Depth Tracker */}
       <ScrollProgress />
       

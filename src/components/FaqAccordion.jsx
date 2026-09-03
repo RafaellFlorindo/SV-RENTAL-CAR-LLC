@@ -13,45 +13,45 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="py-20 lg:py-24 bg-white text-navy-950 border-t border-slate-200">
+    <section id="faq" className="py-20 lg:py-28 bg-onyx text-slate-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div className="text-center mb-14">
+        <div className="text-center mb-16">
           <Reveal>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest mb-3">
-              <HelpCircle className="w-3.5 h-3.5 text-gold" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/25 text-gold text-xs font-bold uppercase tracking-widest mb-3">
+              <HelpCircle className="w-3.5 h-3.5" />
               <span>QUESTIONS &amp; ANSWERS</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-navy-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif font-bold text-white">
               FREQUENTLY ASKED QUESTIONS
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-2">
+            <p className="text-sm text-slate-400 mt-2 font-light">
               Everything you need to know about booking private luxury transportation with SV Rental Car LLC.
             </p>
           </Reveal>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-4">
           {faqData.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
               <Reveal key={idx} delay={idx * 0.05}>
-                <div className={`rounded-lg bg-[#FAF8F5] border transition-colors duration-200 overflow-hidden ${
-                  isOpen ? 'border-[#C59A45]/60 shadow-sm' : 'border-[#E9E1D1]'
+                <div className={`rounded-xl bg-card border transition-all duration-200 overflow-hidden ${
+                  isOpen ? 'border-gold/40 shadow-lg shadow-gold/5' : 'border-white/10'
                 }`}>
                   <button
                     onClick={() => toggle(idx)}
                     type="button"
                     aria-expanded={isOpen}
-                    className="w-full px-5 py-4 text-left flex items-center justify-between text-navy-900 font-semibold text-sm sm:text-base focus:outline-none cursor-pointer"
+                    className="w-full px-6 py-5 text-left flex items-center justify-between text-white font-semibold text-base sm:text-lg focus:outline-none cursor-pointer"
                   >
                     <span>{faq.question}</span>
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={SPRING_SOFT}
-                      className="text-gold-dark"
+                      className="text-gold"
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-5 h-5" />
                     </motion.div>
                   </button>
 
@@ -66,7 +66,7 @@ export default function FaqAccordion() {
                         transition={SPRING_SOFT}
                         className="overflow-hidden"
                       >
-                        <div className="px-5 pb-4 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-[#E9E1D1]/60 pt-3">
+                        <div className="px-6 pb-5 text-sm text-slate-300 leading-relaxed border-t border-white/5 pt-3 font-light">
                           {faq.answer}
                         </div>
                       </motion.div>
