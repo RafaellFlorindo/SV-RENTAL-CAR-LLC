@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Phone, Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowUpRight, ChevronDown, Menu, Phone, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { companyInfo } from '../data/company';
 import { servicesData } from '../data/services';
 import { locationsData } from '../data/locations';
 import SvLogo from '../assets/logo/SvLogo';
+import { SPRING_SNAPPY, SPRING_SOFT } from '../lib/motion';
 
 const navItems = [
   {
@@ -19,7 +21,6 @@ const navItems = [
     }))
   },
   { label: 'Fleet', type: 'link', href: '/#fleet' },
-  { label: 'Fare estimator', type: 'link', href: '/#estimator' },
   { label: 'Ride options', type: 'link', href: '/#ride-options' },
   {
     label: 'Service area',
@@ -38,7 +39,6 @@ const navItems = [
     type: 'dropdown',
     items: [
       { href: '/#fleet', label: 'First-class fleet' },
-      { href: '/#estimator', label: 'Fare calculator' },
       { href: '/#testimonials', label: 'Reviews' },
       { href: '/#about', label: 'Our story' },
       { href: '/#faq', label: 'FAQ' }
@@ -55,16 +55,16 @@ function DesktopDropdown({ item }) {
         aria-haspopup="true"
       >
         {item.label}
-        <ChevronDown className="h-3.5 w-3.5 transition duration-200 group-hover:rotate-180" />
+        <ChevronDown className="h-3.5 w-3.5 transition duration-200 group-hover:rotate-180 text-gold" />
       </button>
 
-      <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
-        <div className="border border-black/10 bg-white p-2 shadow-2xl shadow-black/10">
+      <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 translate-y-2">
+        <div className="border border-black/10 bg-white p-2 shadow-2xl shadow-black/10 rounded-sm">
           {item.items.map((sub) => (
             <Link
               key={sub.href}
               to={sub.href}
-              className="block px-4 py-3 transition hover:bg-[#F1EEE8]"
+              className="block px-4 py-3 transition hover:bg-[#F1EEE8] rounded-sm"
             >
               <span className="block text-[12px] font-semibold text-black">{sub.label}</span>
               {sub.detail && <span className="mt-0.5 block text-[10px] leading-4 text-black/45">{sub.detail}</span>}
@@ -73,7 +73,7 @@ function DesktopDropdown({ item }) {
           {item.viewAllHref && (
             <Link
               to={item.viewAllHref}
-              className="mt-1 flex items-center justify-between border-t border-black/10 px-4 pt-3 pb-2 text-[11px] font-semibold text-gold"
+              className="mt-1 flex items-center justify-between border-t border-black/10 px-4 pt-3 pb-2 text-[11px] font-semibold text-gold hover:underline"
             >
               {item.viewAllLabel} <ArrowUpRight className="h-3.5 w-3.5" />
             </Link>
@@ -104,22 +104,30 @@ function MobileAccordionItem({ item, onNavigate }) {
         className="flex w-full items-center justify-between py-4 font-serif text-2xl font-semibold"
       >
         {item.label}
-        <ChevronDown className={`h-5 w-5 transition ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`h-5 w-5 transition ${open ? 'rotate-180 text-gold' : ''}`} />
       </button>
-      {open && (
-        <div className="flex flex-col gap-1 pb-4 pl-1">
-          {item.items.map((sub) => (
-            <Link key={sub.href} to={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65">
-              {sub.label}
-            </Link>
-          ))}
-          {item.viewAllHref && (
-            <Link to={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
-              {item.viewAllLabel}
-            </Link>
-          )}
-        </div>
-      )}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={SPRING_SOFT}
+            className="overflow-hidden flex flex-col gap-1 pb-4 pl-1"
+          >
+            {item.items.map((sub) => (
+              <Link key={sub.href} to={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65 hover:text-black">
+                {sub.label}
+              </Link>
+            ))}
+            {item.viewAllHref && (
+              <Link to={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
+                {item.viewAllLabel}
+              </Link>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -167,7 +175,7 @@ export default function Header() {
               <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
             </span>
           </a>
-          <Link to="/#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold">
+          <Link to="/#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold hover:text-white">
             Check availability <ArrowUpRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -177,22 +185,30 @@ export default function Header() {
         </button>
       </div>
 
-      {mobileOpen && (
-        <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden">
-          <div className="mb-4 flex items-center justify-between border-b border-black/10 pb-4 text-xs">
-            <span className="font-semibold text-black/60">English • Português • Español</span>
-            <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-bold text-gold">
-              <Phone className="h-3 w-3" /> {companyInfo.phone}
-            </a>
-          </div>
-          <nav className="mx-auto flex max-w-[1440px] flex-col" aria-label="Mobile navigation">
-            {navItems.map((item) => (
-              <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
-            ))}
-            <Link to="/#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</Link>
-          </nav>
-        </div>
-      )}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={SPRING_SNAPPY}
+            className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden"
+          >
+            <div className="mb-4 flex items-center justify-between border-b border-black/10 pb-4 text-xs">
+              <span className="font-semibold text-black/60">English • Português • Español</span>
+              <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-bold text-gold">
+                <Phone className="h-3 w-3" /> {companyInfo.phone}
+              </a>
+            </div>
+            <nav className="mx-auto flex max-w-[1440px] flex-col" aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
+              ))}
+              <Link to="/#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</Link>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

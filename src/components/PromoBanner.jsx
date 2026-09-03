@@ -1,11 +1,19 @@
 import React from 'react';
 import { ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { companyInfo } from '../data/company';
+import { fadeUp, viewportConfig } from '../lib/motion';
 
 export default function PromoBanner() {
   return (
     <section className="bg-[#F1EEE8] px-5 pb-20 lg:px-8 lg:pb-28">
-      <div className="mx-auto grid max-w-[1320px] border border-black/15 bg-[#FAF8F4] lg:grid-cols-12">
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewportConfig}
+        className="mx-auto grid max-w-[1320px] border border-black/15 bg-[#FAF8F4] lg:grid-cols-12 rounded-sm shadow-card"
+      >
         <div className="p-8 sm:p-10 lg:col-span-9 lg:p-12">
           <span className="section-kicker text-black/50">A thank you for returning clients</span>
           <h3 className="display-balance mt-4 max-w-3xl font-serif text-3xl font-medium leading-tight tracking-[-0.03em] sm:text-4xl">
@@ -17,7 +25,7 @@ export default function PromoBanner() {
           <span className="max-w-[10rem] text-sm font-semibold leading-5">Ask about the preferred rate</span>
           <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 }

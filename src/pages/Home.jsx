@@ -4,7 +4,6 @@ import TrustBar from '../components/TrustBar';
 import JourneyMoments from '../components/JourneyMoments';
 import ServicesGrid from '../components/ServicesGrid';
 import FleetExperience from '../components/FleetExperience';
-import TripEstimator from '../components/TripEstimator';
 import WhyUs from '../components/WhyUs';
 import Testimonials from '../components/Testimonials';
 import RideOptions from '../components/RideOptions';
@@ -23,7 +22,6 @@ export default function Home() {
       <JourneyMoments />
       <ServicesGrid />
       <FleetExperience />
-      <TripEstimator />
       <WhyUs />
       <Testimonials />
       <RideOptions />
