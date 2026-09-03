@@ -4,19 +4,18 @@ import { companyInfo } from '../data/company';
 
 export default function PromoBanner() {
   return (
-    <section className="bg-[#F4EFE6] px-5 pb-24 lg:px-8 lg:pb-32">
-      <div className="relative mx-auto grid max-w-[1440px] overflow-hidden bg-[#131514] text-white lg:grid-cols-12">
-        <div className="absolute -right-16 -top-32 font-serif text-[24rem] font-black leading-none text-white/[0.025]">10</div>
-        <div className="relative p-8 sm:p-12 lg:col-span-8 lg:p-16">
-          <span className="section-kicker text-white/55">Referral and loyalty offer</span>
-          <h3 className="display-balance mt-6 max-w-3xl font-serif text-4xl font-semibold leading-[1] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
-            Send a friend. <span className="italic text-gold">Save 10%</span> on your next ride.
+    <section className="bg-[#F1EEE8] px-5 pb-20 lg:px-8 lg:pb-28">
+      <div className="mx-auto grid max-w-[1320px] border border-black/15 bg-[#FAF8F4] lg:grid-cols-12">
+        <div className="p-8 sm:p-10 lg:col-span-9 lg:p-12">
+          <span className="section-kicker text-black/50">A thank you for returning clients</span>
+          <h3 className="display-balance mt-4 max-w-3xl font-serif text-3xl font-medium leading-tight tracking-[-0.03em] sm:text-4xl">
+            Refer a friend and save 10% on your next ride.
           </h3>
-          <p className="mt-5 max-w-xl text-sm leading-7 text-white/55">When your referral books with SV, you receive 10% off your next reservation. Returning clients receive the same preferred rate.</p>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-black/55">When your referral books with SV, you receive 10% off your next reservation. Returning clients can request the same preferred rate.</p>
         </div>
-        <a href={`tel:${companyInfo.phoneRaw}`} className="group relative flex min-h-48 items-end justify-between border-t border-white/15 bg-gold p-8 transition hover:bg-gold-light lg:col-span-4 lg:border-l lg:border-t-0 lg:p-12">
-          <span className="max-w-[12rem] text-xs font-bold uppercase leading-5 tracking-[0.16em]">Claim my 10% ride</span>
-          <ArrowUpRight className="h-10 w-10 transition group-hover:rotate-45" strokeWidth={1.2} />
+        <a href={`tel:${companyInfo.phoneRaw}`} className="group flex min-h-36 items-center justify-between border-t border-black/15 bg-gold p-8 text-white transition hover:bg-gold-light lg:col-span-3 lg:border-l lg:border-t-0 lg:p-10">
+          <span className="max-w-[10rem] text-sm font-semibold leading-5">Ask about the preferred rate</span>
+          <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} />
         </a>
       </div>
     </section>

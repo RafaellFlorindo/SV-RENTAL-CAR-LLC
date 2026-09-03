@@ -4,13 +4,13 @@
   "description": "Private chauffeur service in Scottsdale and Phoenix, Arizona.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F4EFE6",
+  "background_color": "#F1EEE8",
   "theme_color": "#131514",
   "icons": [
     {
-      "src": "/sv-rental-car-logo.png",
-      "sizes": "600x600",
-      "type": "image/png"
+      "src": "/sv-rental-car-logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
     }
   ]
 }

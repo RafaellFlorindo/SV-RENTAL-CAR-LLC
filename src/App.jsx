@@ -15,7 +15,7 @@ import SeoStructuredData from './components/SeoStructuredData';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#F4EFE6] text-[#131514] font-sans">
+    <div className="min-h-screen bg-[#F1EEE8] text-[#131514] font-sans">
       <SeoStructuredData />
       <Header />
       <main>

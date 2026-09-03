@@ -15,10 +15,10 @@ export default {
           700: '#3A403B'
         },
         gold: {
-          DEFAULT: '#F36B2B',
-          light: '#FF915E',
-          dark: '#C94712',
-          bg: '#FFF0E8'
+          DEFAULT: '#A94F2B',
+          light: '#C16A44',
+          dark: '#823A20',
+          bg: '#F4E7DF'
         },
         surface: {
           light: '#FFFFFF',
@@ -27,8 +27,8 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Inter"', 'system-ui', 'sans-serif'],
-        sans: ['"Inter"', 'system-ui', 'sans-serif']
+        serif: ['"Source Serif 4"', 'Georgia', 'serif'],
+        sans: ['"Libre Franklin"', 'system-ui', 'sans-serif']
       },
       boxShadow: {
         editorial: '0 24px 80px rgba(19, 21, 20, 0.14)',

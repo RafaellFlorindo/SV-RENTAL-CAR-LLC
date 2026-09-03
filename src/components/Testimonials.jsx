@@ -26,13 +26,13 @@ const placeholderReviews = [
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" aria-labelledby="testimonials-title" className="bg-[#FBF8F2] py-24 lg:py-32">
-      <div className="mx-auto max-w-[1440px] px-5 lg:px-8">
+    <section id="testimonials" aria-labelledby="testimonials-title" className="bg-[#FAF8F4] py-20 lg:py-28">
+      <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
         <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <span className="section-kicker text-black/55">Client testimonials</span>
-            <h2 id="testimonials-title" className="display-balance mt-6 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
-              The kind of ride people remember for the right reasons.
+            <h2 id="testimonials-title" className="display-balance mt-5 font-serif text-4xl font-medium leading-[1] tracking-[-0.035em] sm:text-5xl lg:text-6xl">
+              The details our clients remember.
             </h2>
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
@@ -42,16 +42,15 @@ export default function Testimonials() {
           </div>
         </div>
 
-        <div className="mt-14 grid gap-px bg-black/15 lg:grid-cols-3">
-          {placeholderReviews.map((review, index) => (
-            <article key={review.name} data-review-status="placeholder" className="flex min-h-[380px] flex-col justify-between bg-[#FBF8F2] p-7 sm:p-9">
-              <div className="flex items-center justify-between">
+        <div className="mt-14 grid gap-5 lg:grid-cols-3">
+          {placeholderReviews.map((review) => (
+            <article key={review.name} data-review-status="placeholder" className="flex min-h-[350px] flex-col justify-between border border-black/12 bg-white p-7 sm:p-8">
+              <div>
                 <div className="flex gap-1 text-gold" aria-label="Five stars">
                   {[...Array(5)].map((_, starIndex) => <Star key={starIndex} className="h-4 w-4 fill-current" />)}
                 </div>
-                <span className="font-serif text-xl italic text-black/25">0{index + 1}</span>
               </div>
-              <blockquote className="my-10 font-serif text-2xl font-semibold leading-snug tracking-[-0.025em]">“{review.quote}”</blockquote>
+              <blockquote className="my-9 font-serif text-[1.35rem] font-medium leading-relaxed tracking-[-0.015em]">“{review.quote}”</blockquote>
               <footer className="border-t border-black/15 pt-5">
                 <cite className="not-italic text-[11px] font-bold uppercase tracking-[0.14em]">{review.name}</cite>
                 <p className="mt-2 text-[10px] leading-5 text-black/45">{review.service}<br />{review.location}</p>
@@ -60,15 +59,15 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <div className="mt-px flex flex-col gap-6 bg-gold p-7 text-white sm:flex-row sm:items-center sm:justify-between sm:p-9">
+        <div className="mt-5 flex flex-col gap-6 border border-black/12 bg-[#F1EEE8] p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div className="flex items-center gap-4">
-            <MessageSquareQuote className="h-8 w-8 shrink-0" strokeWidth={1.4} />
+            <MessageSquareQuote className="h-7 w-7 shrink-0 text-gold" strokeWidth={1.4} />
             <div>
               <h3 className="font-serif text-2xl font-semibold">Had a great ride with SV?</h3>
-              <p className="mt-1 text-xs text-white/75">Share what stood out and help the next passenger book with confidence.</p>
+              <p className="mt-1 text-xs text-black/55">Share what stood out and help the next passenger book with confidence.</p>
             </div>
           </div>
-          <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex shrink-0 items-center gap-3 rounded-full bg-[#131514] px-6 py-4 text-[10px] font-bold uppercase tracking-[0.15em] text-white transition hover:bg-white hover:text-black">
+          <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex shrink-0 items-center gap-3 bg-[#131514] px-6 py-4 text-[12px] font-semibold text-white transition hover:bg-gold">
             Share my experience <ArrowUpRight className="h-4 w-4" />
           </a>
         </div>

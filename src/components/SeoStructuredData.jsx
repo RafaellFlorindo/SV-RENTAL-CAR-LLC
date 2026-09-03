@@ -24,7 +24,7 @@ export default function SeoStructuredData() {
         legalName: companyInfo.name,
         description: 'Family-owned private chauffeur and luxury transportation service for Scottsdale, Phoenix and the surrounding Arizona communities.',
         url: `${origin}/`,
-        logo: `${origin}/sv-rental-car-logo.png`,
+        logo: `${origin}/sv-rental-car-logo.svg`,
         image: `${origin}/og-sv-rental-car.jpg`,
         telephone: `+1-${companyInfo.phoneRaw.slice(0, 3)}-${companyInfo.phoneRaw.slice(3, 6)}-${companyInfo.phoneRaw.slice(6)}`,
         priceRange: '$$$',
