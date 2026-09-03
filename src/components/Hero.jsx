@@ -19,7 +19,7 @@ export default function Hero() {
           <h1 className="display-balance mt-7 font-serif text-[3.5rem] font-medium leading-[0.95] tracking-[-0.04em] sm:text-6xl lg:text-[5.6rem]">
             Scottsdale rides, handled personally.
           </h1>
-          <p className="mt-7 max-w-lg text-sm leading-7 text-white/72 sm:text-base">
+          <p className="mt-7 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
             Airport pickups, golf days, meetings and nights out with a local driver who knows the plan before you get in.
           </p>
 

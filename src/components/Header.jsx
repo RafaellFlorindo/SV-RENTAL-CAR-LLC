@@ -5,10 +5,10 @@ import SvLogo from '../assets/logo/SvLogo';
 
 const navItems = [
   ['Services', '#services'],
-  ['The standard', '#experience'],
-  ['Why SV', '#why-us'],
-  ['Testimonials', '#testimonials'],
-  ['Our story', '#about'],
+  ['Ride options', '#ride-options'],
+  ['How it works', '#experience'],
+  ['Reviews', '#testimonials'],
+  ['Service area', '#service-areas'],
   ['FAQ', '#faq']
 ];
 

@@ -44,7 +44,7 @@ export default function Testimonials() {
 
         <div className="mt-14 grid gap-5 lg:grid-cols-3">
           {placeholderReviews.map((review) => (
-            <article key={review.name} data-review-status="placeholder" className="flex min-h-[350px] flex-col justify-between border border-black/12 bg-white p-7 sm:p-8">
+            <article key={review.name} data-review-status="placeholder" className="flex min-h-[350px] flex-col justify-between border border-black/10 bg-white p-7 sm:p-8">
               <div>
                 <div className="flex gap-1 text-gold" aria-label="Five stars">
                   {[...Array(5)].map((_, starIndex) => <Star key={starIndex} className="h-4 w-4 fill-current" />)}
@@ -59,7 +59,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        <div className="mt-5 flex flex-col gap-6 border border-black/12 bg-[#F1EEE8] p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+        <div className="mt-5 flex flex-col gap-6 border border-black/10 bg-[#F1EEE8] p-7 sm:flex-row sm:items-center sm:justify-between sm:p-8">
           <div className="flex items-center gap-4">
             <MessageSquareQuote className="h-7 w-7 shrink-0 text-gold" strokeWidth={1.4} />
             <div>

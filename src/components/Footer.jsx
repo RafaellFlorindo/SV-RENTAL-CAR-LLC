@@ -19,7 +19,7 @@ export default function Footer() {
           <div className="lg:col-span-5"><SvLogo variant="light" /><p className="mt-6 max-w-sm text-xs leading-6 text-white/45">A family-owned private chauffeur service for airport transfers, golf outings, business travel and special events across Scottsdale and Phoenix.</p></div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Explore</h3>
-            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60"><a href="#services" className="hover:text-white">Services</a><a href="#experience" className="hover:text-white">The standard</a><a href="#testimonials" className="hover:text-white">Testimonials</a><a href="#about" className="hover:text-white">Our story</a><a href="#faq" className="hover:text-white">FAQ</a></nav>
+            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60"><a href="#services" className="hover:text-white">Services</a><a href="#ride-options" className="hover:text-white">Ride options</a><a href="#experience" className="hover:text-white">How it works</a><a href="#testimonials" className="hover:text-white">Reviews</a><a href="#faq" className="hover:text-white">FAQ</a></nav>
           </div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Service area</h3>
