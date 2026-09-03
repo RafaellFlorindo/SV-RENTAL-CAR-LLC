@@ -36,7 +36,7 @@ export default function ServicesGrid() {
                   </div>
                   <div className="mt-6 flex items-center justify-between text-[11px] font-semibold">
                     <span className="text-black/45">{service.priceNote}</span>
-                    <span className="flex items-center gap-2 text-gold">See details <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                    <span className="flex items-center gap-2 text-gold">Check availability <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
                   </div>
                 </div>
               </Link>

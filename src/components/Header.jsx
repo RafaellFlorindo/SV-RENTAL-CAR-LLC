@@ -141,8 +141,11 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 sm:flex">
-          <a href={`tel:${companyInfo.phoneRaw}`} className="hidden items-center gap-2 px-3 py-2 text-[11px] font-semibold text-black/65 transition hover:text-black xl:flex">
-            <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
+          <a href={`tel:${companyInfo.phoneRaw}`} className="group hidden flex-col items-start px-3 py-1.5 xl:flex">
+            <span className="text-[8px] font-bold uppercase tracking-[0.14em] text-black/40 group-hover:text-black/60">Call now</span>
+            <span className="flex items-center gap-1.5 text-[13px] font-semibold text-black group-hover:text-gold">
+              <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
+            </span>
           </a>
           <Link to="/#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold">
             Check availability <ArrowUpRight className="h-3.5 w-3.5" />
