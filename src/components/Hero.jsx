@@ -1,17 +1,15 @@
 import React from 'react';
-import { Star, ShieldCheck, Sparkles, PhoneCall } from 'lucide-react';
+import { Star, ShieldCheck, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
 import GhlFormEmbed from './GhlFormEmbed';
-import MagneticButton from './motion/MagneticButton';
-import { companyInfo } from '../data/company';
 import { fadeUp, staggerContainer } from '../lib/motion';
 
 export default function Hero() {
   return (
     <section className="relative min-h-[85vh] flex items-center py-16 lg:py-20 bg-[#0A1627] overflow-hidden">
-      {/* Background image with subtle entrance */}
+      {/* Background image */}
       <motion.div
-        initial={{ opacity: 0, scale: 1.05 }}
+        initial={{ opacity: 0, scale: 1.04 }}
         animate={{ opacity: 0.35, scale: 1 }}
         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
         className="absolute inset-0 z-0"
@@ -35,7 +33,7 @@ export default function Hero() {
             animate="show"
             className="lg:col-span-7 space-y-6"
           >
-            {/* 21st.dev Shimmer Pill */}
+            {/* Shimmer Pill */}
             <motion.div variants={fadeUp} className="inline-block">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-white/10 border border-gold/40 text-gold-light text-xs font-bold uppercase tracking-wider shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-gold animate-pulse" />
@@ -76,14 +74,8 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Hero Lead Capture Card with Smooth Entrance */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-5"
-            id="reservation"
-          >
+          {/* Right Column: Hero Lead Capture Card - Static GHL Container (Zero parent transforms for iframe stability) */}
+          <div className="lg:col-span-5" id="reservation">
             <div className="bg-[#12233B] rounded-2xl p-6 sm:p-7 border border-white/10 shadow-2xl relative">
               
               <div className="text-center mb-5">
@@ -98,7 +90,7 @@ export default function Hero() {
               <GhlFormEmbed formId="ghl-hero-form" />
 
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </div>
