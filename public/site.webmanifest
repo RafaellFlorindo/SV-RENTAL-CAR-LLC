@@ -8,9 +8,9 @@
   "theme_color": "#131514",
   "icons": [
     {
-      "src": "/sv-rental-car-logo.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "/sv-rental-car-logo-v2.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ]
 }
