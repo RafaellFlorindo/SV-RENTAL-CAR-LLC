@@ -16,6 +16,10 @@ html {
   background: var(--paper);
 }
 
+[id] {
+  scroll-margin-top: 96px;
+}
+
 body {
   margin: 0;
   font-family: 'Libre Franklin', system-ui, sans-serif;

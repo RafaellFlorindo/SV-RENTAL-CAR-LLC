@@ -15,7 +15,7 @@ export default function ServiceAreas() {
 
           <div className="border-t border-black/20 lg:col-span-7 lg:col-start-6">
             {locationsData.map((location) => (
-              <a key={location.name} href="#reservation" className="group grid grid-cols-[1fr_auto] items-center gap-4 border-b border-black/20 py-6 transition hover:pl-2">
+              <a key={location.name} id={`area-${location.name.toLowerCase()}`} href="#reservation" className="group grid grid-cols-[1fr_auto] items-center gap-4 border-b border-black/20 py-6 transition hover:pl-2">
                 <div>
                   <h3 className="font-serif text-3xl font-medium tracking-[-0.025em]">{location.name}</h3>
                   <p className="mt-1 max-w-xl text-[10px] leading-5 text-black/50">{location.subtitle}</p>

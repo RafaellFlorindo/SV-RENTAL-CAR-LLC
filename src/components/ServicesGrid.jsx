@@ -30,7 +30,7 @@ export default function ServicesGrid() {
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {servicesData.map((service, index) => (
-            <article key={service.id} className="group border-b border-black/15 pb-7">
+            <article key={service.id} id={`service-${service.id}`} className="group border-b border-black/15 pb-7">
               <a href="#reservation" className="block h-full">
                 <div className="relative h-64 overflow-hidden bg-black sm:h-72">
                   <img src={images[service.id]} alt={`${service.title} in Scottsdale and Phoenix, Arizona`} width="1400" height="933" decoding="async" className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />

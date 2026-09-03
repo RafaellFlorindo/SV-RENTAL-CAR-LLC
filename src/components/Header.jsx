@@ -1,16 +1,123 @@
 import React, { useState } from 'react';
-import { Phone, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Phone, Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { companyInfo } from '../data/company';
+import { servicesData } from '../data/services';
+import { locationsData } from '../data/locations';
 import SvLogo from '../assets/logo/SvLogo';
 
 const navItems = [
-  ['Services', '#services'],
-  ['Ride options', '#ride-options'],
-  ['How it works', '#experience'],
-  ['Reviews', '#testimonials'],
-  ['Service area', '#service-areas'],
-  ['FAQ', '#faq']
+  {
+    label: 'Services',
+    type: 'dropdown',
+    viewAllHref: '#services',
+    viewAllLabel: 'View all services',
+    items: servicesData.map((service) => ({
+      href: `#service-${service.id}`,
+      label: service.title,
+      detail: service.tag
+    }))
+  },
+  { label: 'Ride options', type: 'link', href: '#ride-options' },
+  {
+    label: 'Service area',
+    type: 'dropdown',
+    viewAllHref: '#service-areas',
+    viewAllLabel: 'View all locations',
+    items: locationsData.map((location) => ({
+      href: `#area-${location.name.toLowerCase()}`,
+      label: location.name,
+      detail: location.subtitle
+    }))
+  },
+  { label: 'How it works', type: 'link', href: '#experience' },
+  {
+    label: 'More info',
+    type: 'dropdown',
+    items: [
+      { href: '#testimonials', label: 'Reviews' },
+      { href: '#about', label: 'Our story' },
+      { href: '#faq', label: 'FAQ' }
+    ]
+  }
 ];
+
+function DesktopDropdown({ item }) {
+  return (
+    <div className="group relative">
+      <button
+        type="button"
+        className="flex items-center gap-1.5 py-[26px] text-[12px] font-semibold text-black/60 transition hover:text-black"
+        aria-haspopup="true"
+      >
+        {item.label}
+        <ChevronDown className="h-3.5 w-3.5 transition duration-200 group-hover:rotate-180" />
+      </button>
+
+      <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
+        <div className="border border-black/10 bg-white p-2 shadow-2xl shadow-black/10">
+          {item.items.map((sub) => (
+            <a
+              key={sub.href}
+              href={sub.href}
+              className="block px-4 py-3 transition hover:bg-[#F1EEE8]"
+            >
+              <span className="block text-[12px] font-semibold text-black">{sub.label}</span>
+              {sub.detail && <span className="mt-0.5 block text-[10px] leading-4 text-black/45">{sub.detail}</span>}
+            </a>
+          ))}
+          {item.viewAllHref && (
+            <a
+              href={item.viewAllHref}
+              className="mt-1 flex items-center justify-between border-t border-black/10 px-4 pt-3 pb-2 text-[11px] font-semibold text-gold"
+            >
+              {item.viewAllLabel} <ArrowUpRight className="h-3.5 w-3.5" />
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileAccordionItem({ item, onNavigate }) {
+  const [open, setOpen] = useState(false);
+
+  if (item.type === 'link') {
+    return (
+      <a href={item.href} onClick={onNavigate} className="border-b border-black/10 py-4 font-serif text-2xl font-semibold">
+        {item.label}
+      </a>
+    );
+  }
+
+  return (
+    <div className="border-b border-black/10">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between py-4 font-serif text-2xl font-semibold"
+      >
+        {item.label}
+        <ChevronDown className={`h-5 w-5 transition ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div className="flex flex-col gap-1 pb-4 pl-1">
+          {item.items.map((sub) => (
+            <a key={sub.href} href={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65">
+              {sub.label}
+            </a>
+          ))}
+          {item.viewAllHref && (
+            <a href={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
+              {item.viewAllLabel}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -20,12 +127,16 @@ export default function Header() {
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
         <a href="#top" aria-label="SV Rental Car home"><SvLogo /></a>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary navigation">
-          {navItems.map(([label, href]) => (
-            <a key={href} href={href} className="text-[12px] font-semibold text-black/60 transition hover:text-black">
-              {label}
-            </a>
-          ))}
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+          {navItems.map((item) =>
+            item.type === 'dropdown' ? (
+              <DesktopDropdown key={item.label} item={item} />
+            ) : (
+              <a key={item.href} href={item.href} className="text-[12px] font-semibold text-black/60 transition hover:text-black">
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
 
         <div className="hidden items-center gap-3 sm:flex">
@@ -43,12 +154,10 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden">
+        <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden">
           <nav className="mx-auto flex max-w-[1440px] flex-col" aria-label="Mobile navigation">
-            {navItems.map(([label, href]) => (
-              <a key={href} href={href} onClick={() => setMobileOpen(false)} className="border-b border-black/10 py-4 font-serif text-2xl font-semibold">
-                {label}
-              </a>
+            {navItems.map((item) => (
+              <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
             ))}
             <a href="#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</a>
           </nav>
