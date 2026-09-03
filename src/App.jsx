@@ -24,14 +24,14 @@ export default function App() {
       <main>
         <Hero />
         <TrustBar />
+        <JourneyMoments />
         <ServicesGrid />
-        <RideOptions />
-        <ComparisonSection />
         <WhyUs />
         <Testimonials />
-        <JourneyMoments />
-        <LocalRideNotes />
+        <RideOptions />
+        <ComparisonSection />
         <PromoBanner />
+        <LocalRideNotes />
         <AboutStory />
         <ServiceAreas />
         <FaqAccordion />

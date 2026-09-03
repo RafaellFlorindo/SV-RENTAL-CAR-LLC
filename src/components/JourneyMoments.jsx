@@ -1,4 +1,5 @@
 import React from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { airportJet, chauffeurClient, femaleDriver, golfCourse, hourlySuv, specialOccasion } from '../assets/photography';
 
 const moments = [
@@ -22,7 +23,13 @@ export default function JourneyMoments() {
           <p className="max-w-md text-sm leading-7 text-black/55 lg:col-span-4 lg:col-start-9">From an early flight to a full evening out, the details change. The standard of preparation does not.</p>
         </div>
 
-        <div className="mt-12 grid auto-rows-[270px] gap-4 md:grid-cols-12">
+        <div className="mt-8">
+          <a href="#reservation" className="inline-flex items-center gap-3 bg-[#131514] px-6 py-4 text-[12px] font-semibold text-white transition hover:bg-gold">
+            Get my private ride quote <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+
+        <div className="mt-10 grid auto-rows-[270px] gap-4 md:grid-cols-12">
           {moments.map((moment) => (
             <figure key={moment.title} className={`group relative overflow-hidden bg-black ${moment.classes}`}>
               <img src={moment.image} alt={moment.title} width="1400" height="933" loading="lazy" decoding="async" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" />
