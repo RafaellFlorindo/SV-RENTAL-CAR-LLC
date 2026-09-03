@@ -7,6 +7,7 @@ import { serviceImages } from '../data/serviceImages';
 import { companyInfo } from '../data/company';
 import PageHero from '../components/PageHero';
 import PageSeo from '../components/PageSeo';
+import PageStructuredData from '../components/PageStructuredData';
 
 export default function ServicePage() {
   const { slug } = useParams();
@@ -15,13 +16,43 @@ export default function ServicePage() {
   if (!service) return <Navigate to="/404" replace />;
 
   const otherServices = servicesData.filter((item) => item.id !== service.id);
+  const origin = typeof window === 'undefined' ? '' : window.location.origin;
+  const path = `/services/${service.id}`;
 
   return (
     <>
       <PageSeo
         title={`${service.title} in Scottsdale & Phoenix | SV Rental Car`}
         description={`${service.description} Serving Scottsdale, Phoenix, Glendale, Tempe and Gilbert.`}
-        path={`/services/${service.id}`}
+        path={path}
+      />
+
+      <PageStructuredData
+        nodes={[
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+              { '@type': 'ListItem', position: 2, name: 'Services', item: `${origin}/#services` },
+              { '@type': 'ListItem', position: 3, name: service.title, item: `${origin}${path}` }
+            ]
+          },
+          {
+            '@type': 'Service',
+            '@id': `${origin}${path}#service`,
+            name: service.title,
+            description: service.description,
+            serviceType: service.title,
+            provider: { '@id': `${origin}/#business` },
+            areaServed: locationsData.map((location) => ({ '@type': 'City', name: location.name })),
+            offers: {
+              '@type': 'Offer',
+              priceCurrency: 'USD',
+              description: service.priceNote,
+              availability: 'https://schema.org/InStock'
+            }
+          }
+        ]}
       />
 
       <PageHero

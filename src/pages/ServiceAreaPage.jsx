@@ -7,6 +7,7 @@ import { locationImages } from '../data/locationImages';
 import { companyInfo } from '../data/company';
 import PageHero from '../components/PageHero';
 import PageSeo from '../components/PageSeo';
+import PageStructuredData from '../components/PageStructuredData';
 
 export default function ServiceAreaPage() {
   const { slug } = useParams();
@@ -15,13 +16,44 @@ export default function ServiceAreaPage() {
   if (!location) return <Navigate to="/404" replace />;
 
   const otherLocations = locationsData.filter((item) => item.name !== location.name);
+  const origin = typeof window === 'undefined' ? '' : window.location.origin;
+  const path = `/service-areas/${location.name.toLowerCase()}`;
 
   return (
     <>
       <PageSeo
         title={`Private Chauffeur in ${location.name}, AZ | SV Rental Car`}
         description={`Airport transfers, hourly charters and private rides in ${location.name}, Arizona. ${location.subtitle}.`}
-        path={`/service-areas/${location.name.toLowerCase()}`}
+        path={path}
+      />
+
+      <PageStructuredData
+        nodes={[
+          {
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: `${origin}/` },
+              { '@type': 'ListItem', position: 2, name: 'Service area', item: `${origin}/#service-areas` },
+              { '@type': 'ListItem', position: 3, name: location.name, item: `${origin}${path}` }
+            ]
+          },
+          {
+            '@type': 'Service',
+            '@id': `${origin}${path}#service`,
+            name: `Private chauffeur service in ${location.name}, Arizona`,
+            description: `${location.subtitle}. Private chauffeur coverage in ${location.name}, Arizona.`,
+            provider: { '@id': `${origin}/#business` },
+            areaServed: { '@type': 'City', name: location.name },
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: `Private chauffeur services in ${location.name}`,
+              itemListElement: servicesData.map((service) => ({
+                '@type': 'Offer',
+                itemOffered: { '@type': 'Service', name: service.title, description: service.description }
+              }))
+            }
+          }
+        ]}
       />
 
       <PageHero
