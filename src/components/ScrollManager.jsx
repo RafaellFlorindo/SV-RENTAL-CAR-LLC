@@ -11,9 +11,18 @@ export default function ScrollManager() {
     }
 
     const id = hash.replace('#', '');
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'auto' });
+    const scrollToTarget = () => {
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        return true;
+      }
+      return false;
+    };
+
+    if (!scrollToTarget()) {
+      const timer = setTimeout(scrollToTarget, 100);
+      return () => clearTimeout(timer);
     }
   }, [pathname, hash]);
 

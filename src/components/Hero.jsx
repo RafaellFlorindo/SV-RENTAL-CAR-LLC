@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, MapPin, Phone, ShieldCheck, Star } from 'lucide-react';
+import { ArrowUpRight, MapPin, Phone, ShieldCheck, Star, Car, Globe } from 'lucide-react';
 import GhlFormEmbed from './GhlFormEmbed';
 import { companyInfo } from '../data/company';
 import { chauffeurClient } from '../assets/photography';
@@ -7,20 +7,39 @@ import { chauffeurClient } from '../assets/photography';
 export default function Hero() {
   return (
     <section id="top" className="relative isolate overflow-hidden bg-[#151715] text-white">
+      {/* Background Image & Overlays */}
       <div className="absolute inset-y-0 right-0 w-full lg:w-[59%]">
-        <img src={chauffeurClient} alt="Chauffeur opening a vehicle door for a passenger" width="1400" height="933" fetchPriority="high" decoding="async" className="image-reveal h-full w-full object-cover object-[58%_center]" />
+        <img
+          src={chauffeurClient}
+          alt="Chauffeur opening a vehicle door for a passenger"
+          width="1400"
+          height="933"
+          fetchPriority="high"
+          decoding="async"
+          className="image-reveal h-full w-full object-cover object-[58%_center]"
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-[#151715] via-[#151715]/55 to-black/10 lg:via-[#151715]/15" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#151715]/80 via-transparent to-black/10" />
       </div>
 
       <div className="relative mx-auto grid min-h-[740px] max-w-[1320px] grid-cols-1 items-end gap-10 px-5 pb-10 pt-20 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-16">
+        
+        {/* Left Column (7 cols) */}
         <div className="lift-in relative z-10 lg:col-span-7 lg:max-w-[720px]">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/80 backdrop-blur-sm">
-            <MapPin className="h-3.5 w-3.5 text-gold" />Proudly serving Scottsdale, Phoenix &amp; the Valley
-          </span>
+          
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/80 backdrop-blur-sm">
+              <MapPin className="h-3.5 w-3.5 text-gold" />Proudly serving Scottsdale, Phoenix &amp; the Valley
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-black/30 px-3 py-1 text-[10px] font-medium text-white/75 backdrop-blur-sm">
+              <Globe className="h-3 w-3 text-gold" />EN • PT • ES
+            </span>
+          </div>
+
           <h1 className="display-balance mt-6 font-serif text-[3.5rem] font-semibold leading-[0.95] tracking-[-0.04em] sm:text-6xl lg:text-[5.6rem]">
             Scottsdale rides, <span className="text-gold">handled personally.</span>
           </h1>
+
           <p className="mt-7 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
             Airport pickups, golf days, meetings and nights out with a local driver who knows the plan before you get in.
           </p>
@@ -29,8 +48,11 @@ export default function Hero() {
             <a href="#reservation" className="inline-flex items-center gap-3 bg-[#F1EEE8] px-6 py-4 text-[12px] font-semibold text-[#131514] transition hover:bg-white">
               Check availability <ArrowUpRight className="h-4 w-4" />
             </a>
-            <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex items-center gap-3 border border-white/30 bg-black/15 px-6 py-4 text-[12px] font-semibold text-white backdrop-blur-sm transition hover:border-white/65">
-              <Phone className="h-4 w-4 text-gold" />Call or text dispatch
+            <a href="#estimator" className="inline-flex items-center gap-3 border border-white/30 bg-black/20 px-6 py-4 text-[12px] font-semibold text-white backdrop-blur-sm transition hover:border-white/60">
+              <Car className="h-4 w-4 text-gold" />Estimate your fare
+            </a>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="inline-flex items-center gap-2 px-3 text-[12px] font-semibold text-white/80 transition hover:text-white">
+              <Phone className="h-4 w-4 text-gold" />Direct call: {companyInfo.phone}
             </a>
           </div>
 
@@ -39,18 +61,21 @@ export default function Hero() {
               <span className="flex text-gold">{[...Array(5)].map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}</span>5-star client care
             </span>
             <span>Licensed &amp; insured</span>
+            <span>Flight tracking included</span>
             <span>Available 24/7 by reservation</span>
           </div>
         </div>
 
-        <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[420px] lg:self-center">
-          <div className="bg-gold-dark p-5 shadow-2xl shadow-black/50 sm:p-6">
+        {/* Right Column: Hero Form (5 cols) */}
+        <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[440px] lg:self-center">
+          <div className="bg-gold-dark p-5 shadow-2xl shadow-black/50 sm:p-6 rounded-[4px]">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-white">
               <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
             </div>
             <GhlFormEmbed formId="ghl-hero-form" />
           </div>
         </div>
+
       </div>
     </section>
   );

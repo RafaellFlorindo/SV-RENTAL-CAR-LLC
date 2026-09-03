@@ -18,6 +18,8 @@ const navItems = [
       detail: service.tag
     }))
   },
+  { label: 'Fleet', type: 'link', href: '/#fleet' },
+  { label: 'Fare estimator', type: 'link', href: '/#estimator' },
   { label: 'Ride options', type: 'link', href: '/#ride-options' },
   {
     label: 'Service area',
@@ -35,6 +37,8 @@ const navItems = [
     label: 'More info',
     type: 'dropdown',
     items: [
+      { href: '/#fleet', label: 'First-class fleet' },
+      { href: '/#estimator', label: 'Fare calculator' },
       { href: '/#testimonials', label: 'Reviews' },
       { href: '/#about', label: 'Our story' },
       { href: '/#faq', label: 'FAQ' }
@@ -125,6 +129,22 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-[#F1EEE8]/95 backdrop-blur-lg">
+      {/* Subtle Top Reassurance Bar */}
+      <div className="hidden border-b border-white/10 bg-[#131514] px-5 py-1.5 text-[10px] tracking-wide text-white/80 sm:block lg:px-8">
+        <div className="mx-auto flex max-w-[1320px] items-center justify-between">
+          <span className="flex items-center gap-2 font-medium">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Scottsdale &amp; Phoenix Private Chauffeur • 24/7 By Reservation
+          </span>
+          <div className="flex items-center gap-4">
+            <span className="text-white/60">Chauffeurs fluent in English • Português • Español</span>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-semibold text-gold transition hover:underline">
+              <Phone className="h-2.5 w-2.5" /> {companyInfo.phone}
+            </a>
+          </div>
+        </div>
+      </div>
+
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
         <Link to="/" aria-label="SV Rental Car home"><SvLogo /></Link>
 
@@ -159,6 +179,12 @@ export default function Header() {
 
       {mobileOpen && (
         <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden">
+          <div className="mb-4 flex items-center justify-between border-b border-black/10 pb-4 text-xs">
+            <span className="font-semibold text-black/60">English • Português • Español</span>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-bold text-gold">
+              <Phone className="h-3 w-3" /> {companyInfo.phone}
+            </a>
+          </div>
           <nav className="mx-auto flex max-w-[1440px] flex-col" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />

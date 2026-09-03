@@ -18,10 +18,23 @@ export default function Footer() {
 
       <div className="mx-auto max-w-[1320px] px-5 py-16 lg:px-8">
         <div className="grid gap-12 border-b border-white/15 pb-14 md:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-5"><SvLogo variant="light" /><p className="mt-6 max-w-sm text-xs leading-6 text-white/45">A family-owned private chauffeur service for airport transfers, golf outings, business travel and special events across Scottsdale and Phoenix.</p></div>
+          <div className="lg:col-span-5">
+            <SvLogo variant="light" />
+            <p className="mt-6 max-w-sm text-xs leading-6 text-white/45">
+              A family-owned private chauffeur service for airport transfers, golf outings, business travel and special events across Scottsdale and Phoenix. Fluent in English, Português, and Español.
+            </p>
+          </div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Explore</h3>
-            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60"><Link to="/#services" className="hover:text-white">Services</Link><Link to="/#ride-options" className="hover:text-white">Ride options</Link><Link to="/#experience" className="hover:text-white">How it works</Link><Link to="/#testimonials" className="hover:text-white">Reviews</Link><Link to="/#faq" className="hover:text-white">FAQ</Link></nav>
+            <nav className="mt-5 flex flex-col gap-3 text-xs text-white/60">
+              <Link to="/#services" className="hover:text-white">Services</Link>
+              <Link to="/#fleet" className="hover:text-white">First-class fleet</Link>
+              <Link to="/#estimator" className="hover:text-white">Fare estimator</Link>
+              <Link to="/#ride-options" className="hover:text-white">Ride options</Link>
+              <Link to="/#experience" className="hover:text-white">How it works</Link>
+              <Link to="/#testimonials" className="hover:text-white">Reviews</Link>
+              <Link to="/#faq" className="hover:text-white">FAQ</Link>
+            </nav>
           </div>
           <div className="lg:col-span-2">
             <h3 className="text-[9px] font-bold uppercase tracking-[0.18em] text-gold">Service area</h3>

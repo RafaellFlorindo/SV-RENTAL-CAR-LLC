@@ -1,17 +1,20 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import TrustBar from '../components/TrustBar';
+import JourneyMoments from '../components/JourneyMoments';
 import ServicesGrid from '../components/ServicesGrid';
-import RideOptions from '../components/RideOptions';
-import PromoBanner from '../components/PromoBanner';
-import ComparisonSection from '../components/ComparisonSection';
+import FleetExperience from '../components/FleetExperience';
+import TripEstimator from '../components/TripEstimator';
 import WhyUs from '../components/WhyUs';
 import Testimonials from '../components/Testimonials';
-import JourneyMoments from '../components/JourneyMoments';
+import RideOptions from '../components/RideOptions';
+import ComparisonSection from '../components/ComparisonSection';
+import PromoBanner from '../components/PromoBanner';
 import LocalRideNotes from '../components/LocalRideNotes';
 import AboutStory from '../components/AboutStory';
 import ServiceAreas from '../components/ServiceAreas';
 import FaqAccordion from '../components/FaqAccordion';
+import VipFloatingContact from '../components/VipFloatingContact';
 
 export default function Home() {
   return (
@@ -20,6 +23,8 @@ export default function Home() {
       <TrustBar />
       <JourneyMoments />
       <ServicesGrid />
+      <FleetExperience />
+      <TripEstimator />
       <WhyUs />
       <Testimonials />
       <RideOptions />
@@ -29,6 +34,7 @@ export default function Home() {
       <AboutStory />
       <ServiceAreas />
       <FaqAccordion />
+      <VipFloatingContact />
     </>
   );
 }
