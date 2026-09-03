@@ -53,11 +53,16 @@ img {
 .section-kicker {
   display: inline-flex;
   align-items: center;
+  gap: 0.45em;
   font-size: 0.68rem;
   font-weight: 600;
   line-height: 1;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  padding: 0.6em 1em;
+  border-radius: 999px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border: 1px solid color-mix(in srgb, currentColor 24%, transparent);
 }
 
 .image-reveal {

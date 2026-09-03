@@ -48,7 +48,9 @@ export default function PageHero({ breadcrumbs, kicker, title, description, imag
           <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-gold">
             <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
           </div>
-          <GhlFormEmbed formId={formId} />
+          <div className="border border-white/10 bg-[#0F1110] p-2.5 shadow-2xl shadow-black/50">
+            <GhlFormEmbed formId={formId} />
+          </div>
         </div>
       </div>
     </section>
