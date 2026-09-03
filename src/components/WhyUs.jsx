@@ -1,53 +1,122 @@
 import React from 'react';
-import { ArrowUpRight, Award, HeartHandshake, ShieldCheck, TimerReset } from 'lucide-react';
+import { Award, HeartHandshake, DollarSign, ShieldCheck, Phone, Check } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { companyInfo } from '../data/company';
-import { chauffeurClient } from '../assets/photography';
-
-const values = [
-  [TimerReset, 'Early by design', 'Your driver checks the route and plans to be in position before the scheduled pickup.'],
-  [HeartHandshake, 'One trusted team', 'You know who is responsible for the ride and who to contact when the plan changes.'],
-  [Award, 'Clear pricing first', 'You receive the rate and itinerary expectations before you confirm the reservation.'],
-  [ShieldCheck, 'Prepared for Arizona', 'A clean, cooled cabin and smooth driving make the heat and traffic easier to forget.']
-];
+import SpotlightCard from './motion/SpotlightCard';
+import Reveal from './motion/Reveal';
+import AnimatedCounter from './motion/AnimatedCounter';
+import MagneticButton from './motion/MagneticButton';
+import { staggerContainer, fadeUp, viewportConfig } from '../lib/motion';
 
 export default function WhyUs() {
+  const values = [
+    {
+      icon: Award,
+      title: "PUNCTUAL & GUARANTEED",
+      desc: "Live flight tracking and route planning ensure our chauffeur is on-site 10 minutes ahead of scheduled pickup."
+    },
+    {
+      icon: HeartHandshake,
+      title: "DEDICATED FAMILY TOUCH",
+      desc: `Founded and operated by ${companyInfo.founders}, delivering genuine accountability, discretion, and hospitality.`
+    },
+    {
+      icon: DollarSign,
+      title: "TRANSPARENT HOURLY RATES",
+      desc: "Clear pricing with zero hidden surcharges. Hourly charters (minimum 4h, avg $500) provide unlimited stops and total flexibility."
+    },
+    {
+      icon: ShieldCheck,
+      title: "SAFETY & PREMIUM CARE",
+      desc: "Highest defensive driving standards, smooth cornering, and sanitized vehicle interiors for tranquil passenger peace of mind."
+    }
+  ];
+
   return (
-    <section id="why-us" className="bg-[#151715] py-20 text-white lg:py-28">
-      <div className="mx-auto max-w-[1320px] px-5 lg:px-8">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-stretch">
-          <div className="relative min-h-[540px] overflow-hidden lg:col-span-5">
-            <img src={chauffeurClient} alt="Chauffeur welcoming a passenger" width="1400" height="933" decoding="async" className="absolute inset-0 h-full w-full object-cover object-[62%_center]" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-7 sm:p-9">
-              <div className="border-l-2 border-gold pl-5">
-                <span className="font-serif text-5xl font-semibold">{companyInfo.experienceYears}</span>
-                <p className="mt-1 max-w-[15rem] text-[9px] font-bold uppercase leading-4 tracking-[0.17em] text-white/60">Years of private chauffeur experience across Arizona</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-col justify-between lg:col-span-7 lg:pl-8">
-            <div>
-              <span className="section-kicker text-white/50">Why ride with SV</span>
-              <h2 className="display-balance mt-5 max-w-3xl font-serif text-4xl font-medium leading-[1] tracking-[-0.035em] sm:text-5xl lg:text-6xl">The best part of the ride is not having to think about it.</h2>
-              <p className="mt-6 max-w-xl text-sm leading-7 text-white/55">No wondering who will show up. No refreshing an app at the curb. No moving your luggage from ride to ride. Just one prepared vehicle and one accountable driver.</p>
-            </div>
-
-            <div className="mt-12 grid border-t border-white/15 sm:grid-cols-2">
-              {values.map(([Icon, title, description]) => (
-                <div key={title} className="border-b border-white/15 py-7 pr-6 sm:odd:border-r sm:even:pl-7">
-                  <div className="mb-5">
-                    <Icon className="h-5 w-5 text-gold" strokeWidth={1.5} />
+    <section id="why-us" className="py-20 lg:py-24 bg-[#F8F9FA] text-navy-950 border-t border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          {/* Left Column: Image with Animated Counter Badge */}
+          <div className="lg:col-span-5 relative">
+            <Reveal>
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200 relative bg-white group">
+                <img
+                  src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=800&q=80"
+                  alt="SV Rental Car Experience"
+                  className="w-full h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent"></div>
+                
+                {/* 21st.dev Animated Badge */}
+                <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-[#0F1E33] border border-white/10 flex items-center gap-4 text-white shadow-2xl">
+                  <AnimatedCounter value={companyInfo.experienceYears} className="text-3xl font-serif font-extrabold text-gold" />
+                  <div className="text-xs">
+                    <span className="font-bold uppercase tracking-wider block">Years in Private Chauffeur Services</span>
+                    <span className="text-slate-300">Trusted by executives &amp; visitors in Arizona</span>
                   </div>
-                  <h3 className="font-serif text-2xl font-medium">{title}</h3>
-                  <p className="mt-3 text-xs leading-6 text-white/50">{description}</p>
                 </div>
-              ))}
-            </div>
-
-            <a href="#reservation" className="mt-10 inline-flex w-fit items-center gap-3 bg-[#F1EEE8] px-6 py-4 text-[12px] font-semibold text-[#131514] transition hover:bg-white">Get my private ride quote <ArrowUpRight className="h-4 w-4" /></a>
+              </div>
+            </Reveal>
           </div>
+
+          {/* Right Column: 4 Spotlight Cards */}
+          <div className="lg:col-span-7 space-y-7">
+            <Reveal>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#EBF0F7] border border-[#CAD8E8] text-navy-900 text-xs font-bold uppercase tracking-widest mb-3">
+                <Check className="w-3.5 h-3.5 text-gold" />
+                <span>WHY CHOOSE SV RENTAL CAR</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-serif font-extrabold text-navy-900 tracking-tight leading-tight">
+                HASSLE-FREE LUXURY TRANSPORTATION
+              </h2>
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed font-light">
+                We eliminate the uncertainty of rideshare surges and unfamiliar drivers by providing dedicated, family-owned private chauffeured service.
+              </p>
+            </Reveal>
+
+            {/* 4 Feature Cards (2x2 grid) */}
+            <motion.div
+              variants={staggerContainer(0.08, 0.1)}
+              initial="hidden"
+              whileInView="show"
+              viewport={viewportConfig}
+              className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+            >
+              {values.map((v, idx) => {
+                const Icon = v.icon;
+                return (
+                  <motion.div key={idx} variants={fadeUp}>
+                    <SpotlightCard className="p-5 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:shadow-md transition">
+                      <div className="w-9 h-9 rounded bg-[#FBF7EE] text-gold-dark flex items-center justify-center mb-2.5 border border-gold/20">
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      <h3 className="text-xs font-bold text-navy-900 mb-1 uppercase tracking-wide">{v.title}</h3>
+                      <p className="text-[11px] text-slate-600 leading-relaxed">{v.desc}</p>
+                    </SpotlightCard>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+
+            {/* Bottom Actions with Magnetic Buttons */}
+            <Reveal delay={0.2}>
+              <div className="flex flex-wrap items-center gap-4 pt-2">
+                <MagneticButton href="#reservation" variant="navy" className="px-7 py-3.5">
+                  <span>BOOK A RIDE</span>
+                </MagneticButton>
+                <MagneticButton href={`tel:${companyInfo.phoneRaw}`} variant="white" className="px-6 py-3.5">
+                  <Phone className="w-3.5 h-3.5 text-gold-dark" />
+                  <span>{companyInfo.phone}</span>
+                </MagneticButton>
+              </div>
+            </Reveal>
+
+          </div>
+
         </div>
+
       </div>
     </section>
   );
