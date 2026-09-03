@@ -14,7 +14,6 @@ import LocalRideNotes from '../components/LocalRideNotes';
 import AboutStory from '../components/AboutStory';
 import ServiceAreas from '../components/ServiceAreas';
 import FaqAccordion from '../components/FaqAccordion';
-import VipFloatingContact from '../components/VipFloatingContact';
 
 export default function Home() {
   return (
@@ -34,7 +33,6 @@ export default function Home() {
       <AboutStory />
       <ServiceAreas />
       <FaqAccordion />
-      <VipFloatingContact />
     </>
   );
 }

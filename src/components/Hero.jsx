@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, MapPin, Phone, ShieldCheck, Star, Car, Globe } from 'lucide-react';
+import { ArrowUpRight, MapPin, Phone, Star, Car, Globe } from 'lucide-react';
 import GhlFormEmbed from './GhlFormEmbed';
 import { companyInfo } from '../data/company';
 import { chauffeurClient } from '../assets/photography';
@@ -67,13 +67,8 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Hero Form (5 cols) */}
-        <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[440px] lg:self-center">
-          <div className="bg-gold-dark p-5 shadow-2xl shadow-black/50 sm:p-6 rounded-[4px]">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-white">
-              <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
-            </div>
-            <GhlFormEmbed formId="ghl-hero-form" />
-          </div>
+        <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[420px] lg:self-center">
+          <GhlFormEmbed formId="ghl-hero-form" />
         </div>
 
       </div>

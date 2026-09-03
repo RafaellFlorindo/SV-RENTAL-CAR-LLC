@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BadgeCheck, ChevronRight, ShieldCheck, Star } from 'lucide-react';
+import { BadgeCheck, ChevronRight, Star } from 'lucide-react';
 import GhlFormEmbed from './GhlFormEmbed';
 
 export default function PageHero({ breadcrumbs, kicker, title, description, image, imageAlt, formId }) {
@@ -45,12 +45,7 @@ export default function PageHero({ breadcrumbs, kicker, title, description, imag
         </div>
 
         <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[420px] lg:self-center">
-          <div className="bg-gold-dark p-5 shadow-2xl shadow-black/50 sm:p-6">
-            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-white">
-              <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
-            </div>
-            <GhlFormEmbed formId={formId} />
-          </div>
+          <GhlFormEmbed formId={formId} />
         </div>
       </div>
     </section>
