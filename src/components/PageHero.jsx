@@ -28,7 +28,7 @@ export default function PageHero({ breadcrumbs, kicker, title, description, imag
           <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-white/80 backdrop-blur-sm">
             <BadgeCheck className="h-3.5 w-3.5 text-gold" />{kicker}
           </span>
-          <h1 className="display-balance mt-6 font-serif text-[2.75rem] font-medium leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-[4.2rem]">
+          <h1 className="display-balance mt-6 font-serif text-[2.75rem] font-semibold leading-[0.98] tracking-[-0.04em] sm:text-5xl lg:text-[4.2rem]">
             {title}
           </h1>
           <p className="mt-7 max-w-lg text-sm leading-7 text-white/70 sm:text-base">
@@ -45,10 +45,10 @@ export default function PageHero({ breadcrumbs, kicker, title, description, imag
         </div>
 
         <div id="reservation" className="lift-in-delay relative z-10 lg:col-span-5 lg:ml-auto lg:w-[420px] lg:self-center">
-          <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/15 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-gold">
-            <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
-          </div>
-          <div className="border border-white/10 bg-[#0F1110] p-2.5 shadow-2xl shadow-black/50">
+          <div className="bg-gold-dark p-5 shadow-2xl shadow-black/50 sm:p-6">
+            <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] text-white">
+              <ShieldCheck className="h-3.5 w-3.5" />Free quote, no obligation
+            </div>
             <GhlFormEmbed formId={formId} />
           </div>
         </div>

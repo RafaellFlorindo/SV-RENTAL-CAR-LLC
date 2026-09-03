@@ -18,23 +18,23 @@ export default function ServicesGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {servicesData.map((service, index) => (
             <article key={service.id} id={`service-${service.id}`} className="group overflow-hidden border border-black/10 bg-white shadow-card transition duration-300 hover:-translate-y-1 hover:shadow-editorial">
               <Link to={`/services/${service.id}`} className="block h-full">
-                <div className="relative h-56 overflow-hidden bg-black">
+                <div className="relative h-44 overflow-hidden bg-black">
                   <img src={serviceImages[service.id]} alt={`${service.title} in Scottsdale and Phoenix, Arizona`} width="1400" height="933" decoding="async" className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
                 </div>
 
-                <div className="flex min-h-[220px] flex-col justify-between p-6">
+                <div className="flex min-h-[190px] flex-col justify-between p-5">
                   <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-gold">{service.tag}</span>
-                    <h3 className="mt-2 font-serif text-xl font-medium leading-tight tracking-[-0.02em]">{service.title}</h3>
-                    <p className="mt-3 text-[13px] leading-6 text-black/55">{service.description}</p>
+                    <span className="text-[9px] font-semibold uppercase tracking-[0.1em] text-gold">{service.tag}</span>
+                    <h3 className="mt-2 font-sans text-sm font-bold uppercase tracking-[0.02em] text-[#131514]">{service.title}</h3>
+                    <p className="mt-2.5 text-[12.5px] leading-6 text-black/55">{service.description}</p>
                   </div>
-                  <div className="mt-6 flex items-center justify-between border-t border-black/10 pt-4 text-[11px] font-semibold">
+                  <div className="mt-5 flex items-center justify-between border-t border-black/10 pt-3.5 text-[11px] font-semibold">
                     <span className="text-black/45">{service.priceNote}</span>
-                    <span className="flex items-center gap-2 text-gold">Check availability <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                    <span className="flex items-center gap-1.5 text-gold">Check availability <ArrowUpRight className="h-3.5 w-3.5 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
                   </div>
                 </div>
               </Link>
