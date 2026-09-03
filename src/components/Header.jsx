@@ -1,152 +1,198 @@
-import React, { useState, useEffect } from 'react';
-import { Phone, Menu, X, ArrowRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Phone, Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { companyInfo } from '../data/company';
+import { servicesData } from '../data/services';
+import { locationsData } from '../data/locations';
 import SvLogo from '../assets/logo/SvLogo';
-import MagneticButton from './motion/MagneticButton';
-import { SPRING_SNAPPY } from '../lib/motion';
+
+const navItems = [
+  {
+    label: 'Services',
+    type: 'dropdown',
+    viewAllHref: '/#services',
+    viewAllLabel: 'View all services',
+    items: servicesData.map((service) => ({
+      href: `/services/${service.id}`,
+      label: service.title,
+      detail: service.tag
+    }))
+  },
+  { label: 'Fleet', type: 'link', href: '/#fleet' },
+  { label: 'Fare estimator', type: 'link', href: '/#estimator' },
+  { label: 'Ride options', type: 'link', href: '/#ride-options' },
+  {
+    label: 'Service area',
+    type: 'dropdown',
+    viewAllHref: '/#service-areas',
+    viewAllLabel: 'View all locations',
+    items: locationsData.map((location) => ({
+      href: `/service-areas/${location.name.toLowerCase()}`,
+      label: location.name,
+      detail: location.subtitle
+    }))
+  },
+  { label: 'How it works', type: 'link', href: '/#experience' },
+  {
+    label: 'More info',
+    type: 'dropdown',
+    items: [
+      { href: '/#fleet', label: 'First-class fleet' },
+      { href: '/#estimator', label: 'Fare calculator' },
+      { href: '/#testimonials', label: 'Reviews' },
+      { href: '/#about', label: 'Our story' },
+      { href: '/#faq', label: 'FAQ' }
+    ]
+  }
+];
+
+function DesktopDropdown({ item }) {
+  return (
+    <div className="group relative">
+      <button
+        type="button"
+        className="flex items-center gap-1.5 py-[26px] text-[12px] font-semibold text-black/60 transition hover:text-black"
+        aria-haspopup="true"
+      >
+        {item.label}
+        <ChevronDown className="h-3.5 w-3.5 transition duration-200 group-hover:rotate-180" />
+      </button>
+
+      <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
+        <div className="border border-black/10 bg-white p-2 shadow-2xl shadow-black/10">
+          {item.items.map((sub) => (
+            <Link
+              key={sub.href}
+              to={sub.href}
+              className="block px-4 py-3 transition hover:bg-[#F1EEE8]"
+            >
+              <span className="block text-[12px] font-semibold text-black">{sub.label}</span>
+              {sub.detail && <span className="mt-0.5 block text-[10px] leading-4 text-black/45">{sub.detail}</span>}
+            </Link>
+          ))}
+          {item.viewAllHref && (
+            <Link
+              to={item.viewAllHref}
+              className="mt-1 flex items-center justify-between border-t border-black/10 px-4 pt-3 pb-2 text-[11px] font-semibold text-gold"
+            >
+              {item.viewAllLabel} <ArrowUpRight className="h-3.5 w-3.5" />
+            </Link>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MobileAccordionItem({ item, onNavigate }) {
+  const [open, setOpen] = useState(false);
+
+  if (item.type === 'link') {
+    return (
+      <Link to={item.href} onClick={onNavigate} className="border-b border-black/10 py-4 font-serif text-2xl font-semibold">
+        {item.label}
+      </Link>
+    );
+  }
+
+  return (
+    <div className="border-b border-black/10">
+      <button
+        type="button"
+        onClick={() => setOpen((value) => !value)}
+        aria-expanded={open}
+        className="flex w-full items-center justify-between py-4 font-serif text-2xl font-semibold"
+      >
+        {item.label}
+        <ChevronDown className={`h-5 w-5 transition ${open ? 'rotate-180' : ''}`} />
+      </button>
+      {open && (
+        <div className="flex flex-col gap-1 pb-4 pl-1">
+          {item.items.map((sub) => (
+            <Link key={sub.href} to={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65">
+              {sub.label}
+            </Link>
+          ))}
+          {item.viewAllHref && (
+            <Link to={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
+              {item.viewAllLabel}
+            </Link>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 30);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
-    <motion.header
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-[#0A1627]/95 backdrop-blur-md border-b border-white/10 shadow-xl py-0'
-          : 'bg-[#0F1E33] border-b border-white/10 py-1'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
-        {/* Brand Logo */}
-        <a href="#" className="flex items-center gap-3 group">
-          <SvLogo />
-        </a>
-
-        {/* Center Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider text-slate-200">
-          <a href="#" className="text-gold transition hover:text-gold-light">Home</a>
-          <a href="#services" className="hover:text-gold transition duration-200">Services</a>
-          <a href="#experience" className="hover:text-gold transition duration-200">Experience</a>
-          <a href="#why-us" className="hover:text-gold transition duration-200">Why Choose Us</a>
-          <a href="#about" className="hover:text-gold transition duration-200">About Us</a>
-          <a href="#service-areas" className="hover:text-gold transition duration-200">Service Areas</a>
-          <a href="#faq" className="hover:text-gold transition duration-200">FAQ</a>
-        </nav>
-
-        {/* Right Action */}
-        <div className="hidden sm:flex items-center gap-5">
-          <a
-            href={`tel:${companyInfo.phoneRaw}`}
-            className="flex items-center gap-2 text-white hover:text-gold transition group"
-          >
-            <div className="w-8 h-8 rounded-full bg-white/10 group-hover:bg-gold/20 flex items-center justify-center text-gold transition">
-              <Phone className="w-3.5 h-3.5" />
-            </div>
-            <span className="text-xs font-bold">{companyInfo.phone}</span>
-          </a>
-
-          <MagneticButton href="#reservation" variant="gold" className="px-5 py-2.5">
-            <span>Book A Ride</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </MagneticButton>
+    <header className="sticky top-0 z-50 border-b border-black/10 bg-[#F1EEE8]/95 backdrop-blur-lg">
+      {/* Subtle Top Reassurance Bar */}
+      <div className="hidden border-b border-white/10 bg-[#131514] px-5 py-1.5 text-[10px] tracking-wide text-white/80 sm:block lg:px-8">
+        <div className="mx-auto flex max-w-[1320px] items-center justify-between">
+          <span className="flex items-center gap-2 font-medium">
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Scottsdale &amp; Phoenix Private Chauffeur • 24/7 By Reservation
+          </span>
+          <div className="flex items-center gap-4">
+            <span className="text-white/60">Chauffeurs fluent in English • Português • Español</span>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-semibold text-gold transition hover:underline">
+              <Phone className="h-2.5 w-2.5" /> {companyInfo.phone}
+            </a>
+          </div>
         </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle navigation menu"
-          className="lg:hidden p-2 text-slate-300 hover:text-white"
-        >
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-
       </div>
 
-      {/* 21st.dev Animated Mobile Menu Drawer */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={SPRING_SNAPPY}
-            className="lg:hidden bg-[#0A1627] border-b border-white/10 px-4 pt-2 pb-6 space-y-3 overflow-hidden"
-          >
-            <a
-              href="#services"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              Services
+      <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
+        <Link to="/" aria-label="SV Rental Car home"><SvLogo /></Link>
+
+        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
+          {navItems.map((item) =>
+            item.type === 'dropdown' ? (
+              <DesktopDropdown key={item.label} item={item} />
+            ) : (
+              <Link key={item.href} to={item.href} className="text-[12px] font-semibold text-black/60 transition hover:text-black">
+                {item.label}
+              </Link>
+            )
+          )}
+        </nav>
+
+        <div className="hidden items-center gap-3 sm:flex">
+          <a href={`tel:${companyInfo.phoneRaw}`} className="group hidden flex-col items-start px-3 py-1.5 xl:flex">
+            <span className="text-[8px] font-bold uppercase tracking-[0.14em] text-black/40 group-hover:text-black/60">Call now</span>
+            <span className="flex items-center gap-1.5 text-[13px] font-semibold text-black group-hover:text-gold">
+              <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
+            </span>
+          </a>
+          <Link to="/#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold">
+            Check availability <ArrowUpRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
+        <button onClick={() => setMobileOpen((open) => !open)} aria-label="Toggle navigation menu" aria-expanded={mobileOpen} className="border border-black/15 p-2.5 text-black lg:hidden">
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
+
+      {mobileOpen && (
+        <div className="max-h-[calc(100vh-72px)] overflow-y-auto border-t border-black/10 bg-[#F1EEE8] px-5 py-6 lg:hidden">
+          <div className="mb-4 flex items-center justify-between border-b border-black/10 pb-4 text-xs">
+            <span className="font-semibold text-black/60">English • Português • Español</span>
+            <a href={`tel:${companyInfo.phoneRaw}`} className="flex items-center gap-1 font-bold text-gold">
+              <Phone className="h-3 w-3" /> {companyInfo.phone}
             </a>
-            <a
-              href="#experience"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              Experience &amp; Fleet
-            </a>
-            <a
-              href="#why-us"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              Why Choose Us
-            </a>
-            <a
-              href="#about"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              About Us
-            </a>
-            <a
-              href="#service-areas"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              Service Areas
-            </a>
-            <a
-              href="#faq"
-              onClick={() => setMobileOpen(false)}
-              className="block py-2 text-sm font-medium text-slate-200 hover:text-gold"
-            >
-              FAQ
-            </a>
-            <div className="pt-2 flex flex-col gap-2">
-              <a
-                href={`tel:${companyInfo.phoneRaw}`}
-                className="py-2.5 px-4 rounded bg-white/10 text-white font-bold text-center text-xs flex items-center justify-center gap-2"
-              >
-                <Phone className="w-3.5 h-3.5 text-gold" />
-                <span>{companyInfo.phone}</span>
-              </a>
-              <a
-                href="#reservation"
-                onClick={() => setMobileOpen(false)}
-                className="py-2.5 px-4 rounded bg-gold text-navy-950 font-bold text-center text-xs uppercase tracking-wider"
-              >
-                Book A Ride
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
+          </div>
+          <nav className="mx-auto flex max-w-[1440px] flex-col" aria-label="Mobile navigation">
+            {navItems.map((item) => (
+              <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
+            ))}
+            <Link to="/#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 }

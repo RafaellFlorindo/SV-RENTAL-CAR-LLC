@@ -1,34 +1,23 @@
 import React from 'react';
-import { Gift, ArrowRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { companyInfo } from '../data/company';
-import MagneticButton from './motion/MagneticButton';
-import Reveal from './motion/Reveal';
 
 export default function PromoBanner() {
   return (
-    <section className="py-12 bg-midnight relative border-y border-gold/25 overflow-hidden px-4 sm:px-6 lg:px-8">
-      <Reveal>
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/15 text-gold text-xs font-bold uppercase tracking-widest mb-3 border border-gold/30">
-            <Gift className="w-4 h-4" />
-            <span>EXCLUSIVE CLIENT PERK</span>
-          </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white mb-3">
-            Refer a friend or book your next trip and get <span className="text-gold">10% OFF</span>!
-          </h2>
-          <p className="text-sm text-slate-300 max-w-2xl mx-auto mb-6">
-            We value lasting relationships. Enjoy 10% discount on your next reservation when you recommend SV Rental Car LLC to friends, family, or business partners.
-          </p>
-          <MagneticButton
-            href={`tel:${companyInfo.phoneRaw}`}
-            variant="gold"
-            className="px-8 py-3.5"
-          >
-            <span>Claim Your 10% Discount Now</span>
-            <ArrowRight className="w-4 h-4" />
-          </MagneticButton>
+    <section className="bg-[#F1EEE8] px-5 pb-20 lg:px-8 lg:pb-28">
+      <div className="mx-auto grid max-w-[1320px] border border-black/15 bg-[#FAF8F4] lg:grid-cols-12">
+        <div className="p-8 sm:p-10 lg:col-span-9 lg:p-12">
+          <span className="section-kicker text-black/50">A thank you for returning clients</span>
+          <h3 className="display-balance mt-4 max-w-3xl font-serif text-3xl font-medium leading-tight tracking-[-0.03em] sm:text-4xl">
+            Refer a friend and save 10% on your next ride.
+          </h3>
+          <p className="mt-4 max-w-2xl text-sm leading-7 text-black/55">When your referral books with SV, you receive 10% off your next reservation. Returning clients can request the same preferred rate.</p>
         </div>
-      </Reveal>
+        <a href={`tel:${companyInfo.phoneRaw}`} className="group flex min-h-36 items-center justify-between border-t border-black/15 bg-gold p-8 text-white transition hover:bg-gold-light lg:col-span-3 lg:border-l lg:border-t-0 lg:p-10">
+          <span className="max-w-[10rem] text-sm font-semibold leading-5">Ask about the preferred rate</span>
+          <ArrowUpRight className="h-6 w-6 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.5} />
+        </a>
+      </div>
     </section>
   );
 }
