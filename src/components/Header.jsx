@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Phone, Menu, X, ArrowUpRight, ChevronDown } from 'lucide-react';
 import { companyInfo } from '../data/company';
 import { servicesData } from '../data/services';
@@ -9,34 +10,34 @@ const navItems = [
   {
     label: 'Services',
     type: 'dropdown',
-    viewAllHref: '#services',
+    viewAllHref: '/#services',
     viewAllLabel: 'View all services',
     items: servicesData.map((service) => ({
-      href: `#service-${service.id}`,
+      href: `/services/${service.id}`,
       label: service.title,
       detail: service.tag
     }))
   },
-  { label: 'Ride options', type: 'link', href: '#ride-options' },
+  { label: 'Ride options', type: 'link', href: '/#ride-options' },
   {
     label: 'Service area',
     type: 'dropdown',
-    viewAllHref: '#service-areas',
+    viewAllHref: '/#service-areas',
     viewAllLabel: 'View all locations',
     items: locationsData.map((location) => ({
-      href: `#area-${location.name.toLowerCase()}`,
+      href: `/service-areas/${location.name.toLowerCase()}`,
       label: location.name,
       detail: location.subtitle
     }))
   },
-  { label: 'How it works', type: 'link', href: '#experience' },
+  { label: 'How it works', type: 'link', href: '/#experience' },
   {
     label: 'More info',
     type: 'dropdown',
     items: [
-      { href: '#testimonials', label: 'Reviews' },
-      { href: '#about', label: 'Our story' },
-      { href: '#faq', label: 'FAQ' }
+      { href: '/#testimonials', label: 'Reviews' },
+      { href: '/#about', label: 'Our story' },
+      { href: '/#faq', label: 'FAQ' }
     ]
   }
 ];
@@ -56,22 +57,22 @@ function DesktopDropdown({ item }) {
       <div className="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-3 opacity-0 transition duration-150 group-hover:visible group-hover:opacity-100">
         <div className="border border-black/10 bg-white p-2 shadow-2xl shadow-black/10">
           {item.items.map((sub) => (
-            <a
+            <Link
               key={sub.href}
-              href={sub.href}
+              to={sub.href}
               className="block px-4 py-3 transition hover:bg-[#F1EEE8]"
             >
               <span className="block text-[12px] font-semibold text-black">{sub.label}</span>
               {sub.detail && <span className="mt-0.5 block text-[10px] leading-4 text-black/45">{sub.detail}</span>}
-            </a>
+            </Link>
           ))}
           {item.viewAllHref && (
-            <a
-              href={item.viewAllHref}
+            <Link
+              to={item.viewAllHref}
               className="mt-1 flex items-center justify-between border-t border-black/10 px-4 pt-3 pb-2 text-[11px] font-semibold text-gold"
             >
               {item.viewAllLabel} <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
+            </Link>
           )}
         </div>
       </div>
@@ -84,9 +85,9 @@ function MobileAccordionItem({ item, onNavigate }) {
 
   if (item.type === 'link') {
     return (
-      <a href={item.href} onClick={onNavigate} className="border-b border-black/10 py-4 font-serif text-2xl font-semibold">
+      <Link to={item.href} onClick={onNavigate} className="border-b border-black/10 py-4 font-serif text-2xl font-semibold">
         {item.label}
-      </a>
+      </Link>
     );
   }
 
@@ -104,14 +105,14 @@ function MobileAccordionItem({ item, onNavigate }) {
       {open && (
         <div className="flex flex-col gap-1 pb-4 pl-1">
           {item.items.map((sub) => (
-            <a key={sub.href} href={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65">
+            <Link key={sub.href} to={sub.href} onClick={onNavigate} className="py-2 text-sm font-semibold text-black/65">
               {sub.label}
-            </a>
+            </Link>
           ))}
           {item.viewAllHref && (
-            <a href={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
+            <Link to={item.viewAllHref} onClick={onNavigate} className="py-2 text-sm font-semibold text-gold">
               {item.viewAllLabel}
-            </a>
+            </Link>
           )}
         </div>
       )}
@@ -125,16 +126,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-black/10 bg-[#F1EEE8]/95 backdrop-blur-lg">
       <div className="mx-auto flex h-[72px] max-w-[1320px] items-center justify-between px-5 lg:px-8">
-        <a href="#top" aria-label="SV Rental Car home"><SvLogo /></a>
+        <Link to="/" aria-label="SV Rental Car home"><SvLogo /></Link>
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) =>
             item.type === 'dropdown' ? (
               <DesktopDropdown key={item.label} item={item} />
             ) : (
-              <a key={item.href} href={item.href} className="text-[12px] font-semibold text-black/60 transition hover:text-black">
+              <Link key={item.href} to={item.href} className="text-[12px] font-semibold text-black/60 transition hover:text-black">
                 {item.label}
-              </a>
+              </Link>
             )
           )}
         </nav>
@@ -143,9 +144,9 @@ export default function Header() {
           <a href={`tel:${companyInfo.phoneRaw}`} className="hidden items-center gap-2 px-3 py-2 text-[11px] font-semibold text-black/65 transition hover:text-black xl:flex">
             <Phone className="h-3.5 w-3.5 text-gold" />{companyInfo.phone}
           </a>
-          <a href="#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold">
+          <Link to="/#reservation" className="inline-flex items-center gap-2 bg-[#131514] px-5 py-3 text-[11px] font-semibold text-white transition hover:bg-gold">
             Check availability <ArrowUpRight className="h-3.5 w-3.5" />
-          </a>
+          </Link>
         </div>
 
         <button onClick={() => setMobileOpen((open) => !open)} aria-label="Toggle navigation menu" aria-expanded={mobileOpen} className="border border-black/15 p-2.5 text-black lg:hidden">
@@ -159,7 +160,7 @@ export default function Header() {
             {navItems.map((item) => (
               <MobileAccordionItem key={item.label} item={item} onNavigate={() => setMobileOpen(false)} />
             ))}
-            <a href="#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</a>
+            <Link to="/#reservation" onClick={() => setMobileOpen(false)} className="mt-6 flex items-center justify-center bg-[#131514] px-5 py-4 text-xs font-semibold text-white">Check ride availability</Link>
           </nav>
         </div>
       )}

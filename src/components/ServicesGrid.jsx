@@ -1,16 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { servicesData } from '../data/services';
-import { hourlySuv, golfCourse, airportJet, femaleDriver, chauffeurClient, specialOccasion } from '../assets/photography';
-
-const images = {
-  'hourly-charter': hourlySuv,
-  'golf-events': golfCourse,
-  'airport-transfers': airportJet,
-  'female-chauffeur': femaleDriver,
-  'executive-rides': chauffeurClient,
-  'special-occasions': specialOccasion
-};
+import { serviceImages } from '../data/serviceImages';
 
 export default function ServicesGrid() {
   return (
@@ -31,9 +23,9 @@ export default function ServicesGrid() {
         <div className="grid grid-cols-1 gap-x-6 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {servicesData.map((service, index) => (
             <article key={service.id} id={`service-${service.id}`} className="group border-b border-black/15 pb-7">
-              <a href="#reservation" className="block h-full">
+              <Link to={`/services/${service.id}`} className="block h-full">
                 <div className="relative h-64 overflow-hidden bg-black sm:h-72">
-                  <img src={images[service.id]} alt={`${service.title} in Scottsdale and Phoenix, Arizona`} width="1400" height="933" decoding="async" className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
+                  <img src={serviceImages[service.id]} alt={`${service.title} in Scottsdale and Phoenix, Arizona`} width="1400" height="933" decoding="async" className="h-full w-full object-cover transition duration-700 ease-out group-hover:scale-[1.045]" loading={index > 1 ? 'lazy' : 'eager'} />
                 </div>
 
                 <div className="flex min-h-[205px] flex-col justify-between pt-6">
@@ -44,10 +36,10 @@ export default function ServicesGrid() {
                   </div>
                   <div className="mt-6 flex items-center justify-between text-[11px] font-semibold">
                     <span className="text-black/45">{service.priceNote}</span>
-                    <span className="flex items-center gap-2 text-gold">Check availability <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
+                    <span className="flex items-center gap-2 text-gold">See details <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" /></span>
                   </div>
                 </div>
-              </a>
+              </Link>
             </article>
           ))}
         </div>
